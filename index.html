@@ -320,16 +320,50 @@
   <div class="wrap">
     <div class="kicker">Interaktiv</div>
     <h2 class="serif">Bonus kalkulyatori</h2>
-    <p class="sec-lede">Har bir zonada qancha ish bajarilganini belgilang — bonus jonli hisoblanadi.</p>
-    <div class="calc" id="calc">
-      <h3>Oylik bonus</h3>
-      <div class="sub">Belgilangan maosh 500 $ + zonalar boʻyicha bajarilgan ish</div>
-      <div id="rows"></div>
-      <div class="totals">
-        <div class="t"><span>Belgilangan maosh</span><span>500 $</span></div>
-        <div class="t"><span>Bonus (bajarilgan ish)</span><span id="bonus">0 $</span></div>
-        <div class="t grand"><span>Jami (qoʻlga)</span><b id="grand">500 $</b></div>
+    <p class="sec-lede">Umumiy B (oʻzgaruvchan qism) ni belgilang, har bir zona uchun bajarilish foizini sozlang — uch variant bir vaqtda hisoblanadi.</p>
+
+    <!-- B sozlash bloki -->
+    <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--shadow)">
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:16px">
+        <label style="font-weight:600;font-size:.95rem;min-width:220px">Umumiy B (oʻzgaruvchan qism maks):</label>
+        <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:240px">
+          <input type="number" id="bInput" value="4500" min="0" step="100"
+            style="width:120px;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:1rem;font-weight:600;color:var(--acc)">
+          <span style="font-size:.9rem;color:var(--muted)">$ / oy</span>
+        </div>
       </div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:16px">
+        <label style="font-weight:600;font-size:.95rem;min-width:220px">Belgilangan maosh:</label>
+        <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:240px">
+          <input type="number" id="baseInput" value="500" min="0" step="50"
+            style="width:120px;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:1rem;font-weight:600;color:var(--gold)">
+          <span style="font-size:.9rem;color:var(--muted)">$ / oy</span>
+        </div>
+      </div>
+      <p style="margin-top:12px;font-size:.83rem;color:var(--muted);font-style:italic">B oʻzgarganda barcha variant va zona summalari avtomatik qayta hisoblanadi.</p>
+    </div>
+
+    <!-- 3 ustunli kalkulyator -->
+    <div style="overflow-x:auto">
+      <table id="calcTable" style="width:100%;border-collapse:collapse;min-width:640px;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)">
+        <thead>
+          <tr>
+            <th style="background:#16201C;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:.92rem;padding:14px 16px;text-align:left;min-width:180px">Zona</th>
+            <th style="background:#3a4a44;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:.92rem;padding:14px 16px;text-align:center">1-variant<br><span style="font-weight:400;font-size:.8rem;opacity:.8">Sof yordamchi + PR</span></th>
+            <th style="background:#3a4a44;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:.92rem;padding:14px 16px;text-align:center">2-variant<br><span style="font-weight:400;font-size:.8rem;opacity:.8">Rotatsiya</span></th>
+            <th style="background:var(--acc);color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:.92rem;padding:14px 16px;text-align:center">3-variant ✦<br><span style="font-weight:400;font-size:.8rem;opacity:.8">Gibrid (tavsiya)</span></th>
+          </tr>
+        </thead>
+        <tbody id="calcBody"></tbody>
+        <tfoot id="calcFoot"></tfoot>
+      </table>
+    </div>
+
+    <!-- Slider panel -->
+    <div class="calc" id="sliderPanel" style="margin-top:20px">
+      <h3>Bajarilish foizini sozlang</h3>
+      <div class="sub">Sliderlar uchta variantda bir xil qoʻllanadi</div>
+      <div id="sliderRows"></div>
     </div>
   </div>
 </section>
@@ -361,36 +395,112 @@
 </footer>
 
 <script>
-  const zones=[
-    {n:"1. Shaxsiy topshiriqlar",max:1575},
-    {n:"2. PR / kommunikatsiya",max:1125},
-    {n:"3. Topshiriqlar reyestri",max:675},
-    {n:"4. Yigʻilishlar sikli",max:675},
-    {n:"5. Tashabbuskorlik",max:450},
+  /* ---- Zona nisbatlari (foiz ulushlar, B ga nisbatan) ---- */
+  const zoneRatios = [
+    { n: "1. Shaxsiy topshiriqlar",  r1: 0.35, r2: 0.30, r3: 0.35 },
+    { n: "2. PR / kommunikatsiya",   r1: 0.25, r2: 0.20, r3: 0.25 },
+    { n: "3. Topshiriqlar reyestri", r1: 0.15, r2: 0.20, r3: 0.15 },
+    { n: "4. Yigʻilishlar sikli",    r1: 0.15, r2: 0.15, r3: 0.15 },
+    { n: "5. Tashabbuskorlik",       r1: 0.10, r2: 0.15, r3: 0.10 },
   ];
-  const rowsEl=document.getElementById('rows');
-  zones.forEach((z,i)=>{
-    const r=document.createElement('div');r.className='row';
-    r.innerHTML=`<span class="lbl">${z.n}<span class="max"> · maks ${z.max} $</span></span>
-      <span class="earn" id="e${i}">${z.max} $</span>
-      <input type="range" min="0" max="100" value="100" id="s${i}">
-      <span class="pct" id="p${i}" style="grid-column:1/-1">100% bajarildi</span>`;
-    rowsEl.appendChild(r);
+
+  /* ---- DOM elementlari ---- */
+  const bInput    = document.getElementById('bInput');
+  const baseInput = document.getElementById('baseInput');
+  const tbody     = document.getElementById('calcBody');
+  const tfoot     = document.getElementById('calcFoot');
+  const sliderRows = document.getElementById('sliderRows');
+
+  /* ---- Sliderlarni bir marta qurish ---- */
+  zoneRatios.forEach((z, i) => {
+    const div = document.createElement('div');
+    div.className = 'row';
+    div.innerHTML = `
+      <span class="lbl">${z.n}</span>
+      <span class="earn" id="pct${i}">100%</span>
+      <input type="range" min="0" max="100" value="100" step="1" id="s${i}">
+      <span class="pct" id="plbl${i}" style="grid-column:1/-1">100% bajarildi</span>`;
+    sliderRows.appendChild(div);
+    document.getElementById('s' + i).addEventListener('input', render);
   });
-  function calc(){
-    let b=0;
-    zones.forEach((z,i)=>{
-      const v=+document.getElementById('s'+i).value;
-      const earn=Math.round(z.max*v/100);
-      b+=earn;
-      document.getElementById('e'+i).textContent=earn+' $';
-      document.getElementById('p'+i).textContent=v+'% bajarildi';
+
+  /* ---- Asosiy render funksiyasi ---- */
+  function render() {
+    const B    = Math.max(0, parseInt(bInput.value)    || 0);
+    const BASE = Math.max(0, parseInt(baseInput.value) || 0);
+
+    /* Zona maks summalari B ga qarab */
+    const maxes = zoneRatios.map(z => ({
+      m1: Math.round(B * z.r1),
+      m2: Math.round(B * z.r2),
+      m3: Math.round(B * z.r3),
+    }));
+
+    /* Slider qiymatlari */
+    const pcts = zoneRatios.map((_, i) => parseInt(document.getElementById('s' + i).value));
+
+    /* Slider labellarini yangilash */
+    pcts.forEach((v, i) => {
+      document.getElementById('pct'  + i).textContent = v + '%';
+      document.getElementById('plbl' + i).textContent = v + '% bajarildi';
     });
-    document.getElementById('bonus').textContent=b+' $';
-    document.getElementById('grand').textContent=(500+b)+' $';
+
+    /* Jadval qatorlarini qurish */
+    tbody.innerHTML = '';
+    let tot1 = 0, tot2 = 0, tot3 = 0;
+
+    zoneRatios.forEach((z, i) => {
+      const v  = pcts[i];
+      const e1 = Math.round(maxes[i].m1 * v / 100);
+      const e2 = Math.round(maxes[i].m2 * v / 100);
+      const e3 = Math.round(maxes[i].m3 * v / 100);
+      tot1 += e1; tot2 += e2; tot3 += e3;
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <th style="font-weight:600;color:var(--ink);background:#FAF7EF;padding:12px 16px;border-bottom:1px solid var(--line);font-size:.88rem">
+          ${z.n}
+          <div style="font-weight:400;font-size:.78rem;color:var(--muted);margin-top:2px">
+            maks: ${maxes[i].m1}$ / ${maxes[i].m2}$ / ${maxes[i].m3}$
+          </div>
+        </th>
+        <td style="text-align:center;padding:12px 16px;border-bottom:1px solid var(--line);font-size:.95rem">
+          <b style="font-family:'Fraunces',serif;color:var(--muted)">${e1} $</b>
+        </td>
+        <td style="text-align:center;padding:12px 16px;border-bottom:1px solid var(--line);font-size:.95rem">
+          <b style="font-family:'Fraunces',serif;color:var(--muted)">${e2} $</b>
+        </td>
+        <td style="text-align:center;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--acc-soft);font-size:.95rem">
+          <b style="font-family:'Fraunces',serif;color:var(--acc)">${e3} $</b>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+
+    /* Footer - bonus va jami */
+    tfoot.innerHTML = `
+      <tr style="border-top:2px solid var(--line)">
+        <th style="background:#FAF7EF;padding:12px 16px;font-weight:600;font-size:.9rem;color:var(--muted)">Belgilangan maosh</th>
+        <td style="text-align:center;padding:12px 16px;color:var(--muted);font-size:.92rem">${BASE} $</td>
+        <td style="text-align:center;padding:12px 16px;color:var(--muted);font-size:.92rem">${BASE} $</td>
+        <td style="text-align:center;padding:12px 16px;background:var(--acc-soft);color:var(--muted);font-size:.92rem">${BASE} $</td>
+      </tr>
+      <tr>
+        <th style="background:#FAF7EF;padding:12px 16px;font-weight:600;font-size:.9rem;color:var(--ink)">Bonus (bajarilgan)</th>
+        <td style="text-align:center;padding:12px 16px;font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--muted)">${tot1} $</td>
+        <td style="text-align:center;padding:12px 16px;font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--muted)">${tot2} $</td>
+        <td style="text-align:center;padding:12px 16px;background:var(--acc-soft);font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--acc)">${tot3} $</td>
+      </tr>
+      <tr>
+        <th style="background:#FAF7EF;padding:14px 16px;font-weight:700;font-size:1rem;color:var(--ink);font-family:'Fraunces',serif">JAMI (qoʻlga)</th>
+        <td style="text-align:center;padding:14px 16px;font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;color:#16201C">${BASE + tot1} $</td>
+        <td style="text-align:center;padding:14px 16px;font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;color:#16201C">${BASE + tot2} $</td>
+        <td style="text-align:center;padding:14px 16px;background:var(--acc-soft);font-family:'Fraunces',serif;font-weight:700;font-size:1.35rem;color:var(--acc)">${BASE + tot3} $</td>
+      </tr>`;
   }
-  zones.forEach((z,i)=>document.getElementById('s'+i).addEventListener('input',calc));
-  calc();
+
+  bInput.addEventListener('input', render);
+  baseInput.addEventListener('input', render);
+  render();
 </script>
 </body>
 </html>
