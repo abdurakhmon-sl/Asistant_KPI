@@ -9,11 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F9F6EF; --ink:#14201B; --muted:#566260; --line:#E0DACE;
-  --acc:#0C6649; --acc2:#0E7A57; --acc-soft:#E4EEE9; --acc-pale:#F0F7F3;
-  --gold:#A97430; --gold-soft:#F3E8D4;
-  --danger:#9B3A20; --danger-soft:#FAEAE4;
-  --card:#FFFFFF; --shadow:0 1px 3px rgba(14,32,24,.05),0 6px 20px rgba(14,32,24,.07);
+  --paper:#F5F5F5; --ink:#111111; --muted:#555555; --line:#D0D0D0;
+  --acc:#C0000A; --acc2:#E0000C; --acc-soft:#F5E0E0; --acc-pale:#FAF0F0;
+  --gold:#111111; --gold-soft:#E8E8E8;
+  --danger:#C0000A; --danger-soft:#F5E0E0;
+  --card:#FFFFFF; --shadow:0 1px 3px rgba(0,0,0,.06),0 6px 20px rgba(0,0,0,.09);
   --r:16px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -23,17 +23,17 @@ body{background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",-appl
 h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.015em}
 .serif{font-family:"Fraunces",Georgia,serif}
 .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--acc)}
-.kicker{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.kicker{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#111111;margin-bottom:10px}
 section{padding:52px 0;border-bottom:1px solid var(--line)}
 h2{font-size:clamp(1.55rem,4vw,2.15rem);margin-bottom:6px}
 .sec-lede{color:var(--muted);max-width:64ch;margin-bottom:28px;font-size:.97rem}
-nav.toc{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(14,32,24,.06)}
+nav.toc{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.07)}
 nav.toc .wrap{display:flex;align-items:center;gap:4px;overflow-x:auto;height:52px;-ms-overflow-style:none;scrollbar-width:none}
 nav.toc .wrap::-webkit-scrollbar{display:none}
 nav.toc a{white-space:nowrap;font-size:.8rem;font-weight:600;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:999px;transition:background .15s,color .15s}
 nav.toc a:hover{background:var(--acc-soft);color:var(--acc)}
 .nav-brand{font-family:"Fraunces",serif;font-weight:700;font-size:.95rem;color:var(--ink);margin-right:8px;white-space:nowrap;padding-right:12px;border-right:1px solid var(--line)}
-header.hero{padding:64px 0 48px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(12,102,73,.04) 0%,transparent 60%)}
+header.hero{padding:64px 0 48px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(192,0,10,.04) 0%,transparent 60%)}
 .hero-inputs{display:flex;flex-wrap:wrap;gap:16px 28px;margin-top:28px;padding:20px 24px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);align-items:flex-end}
 .hi-field{display:flex;flex-direction:column;gap:5px}
 .hi-field label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -48,7 +48,7 @@ header.hero{padding:64px 0 48px;border-bottom:1px solid var(--line);background:l
 .hi-total-sub{font-size:.76rem;color:var(--muted)}
 .hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px}
 .sl-logo{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:8px 16px;border-radius:10px;font-family:"Fraunces",serif;font-weight:700;font-size:1.05rem}
-.sl-logo span{width:26px;height:26px;background:var(--acc2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700}
+.sl-logo span{width:26px;height:26px;background:var(--acc);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700}
 .doc-label{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:5px 12px;border-radius:999px}
 .hero h1{font-size:clamp(2.4rem,7vw,3.8rem);margin:0 0 .1em}
 .hero .lede{font-size:clamp(1.05rem,2.5vw,1.3rem);color:var(--muted);font-family:"Fraunces",serif;font-style:italic;font-weight:400;max-width:52ch}
@@ -57,7 +57,7 @@ header.hero{padding:64px 0 48px;border-bottom:1px solid var(--line);background:l
 .hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .hbadge{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;font-weight:600;font-size:.875rem}
 .hbadge.green{background:var(--acc);color:#fff}
-.hbadge.gold{background:var(--gold);color:#fff}
+.hbadge.gold{background:#111111;color:#fff}
 .hbadge.outline{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
 .hbadge::before{content:"";width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5)}
 .hbadge.outline::before{background:var(--muted)}
@@ -65,14 +65,14 @@ header.hero{padding:64px 0 48px;border-bottom:1px solid var(--line);background:l
 .summary-box h3{color:#fff;font-size:1.35rem;margin-bottom:18px}
 .sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden}
 .sum-item{background:rgba(255,255,255,.04);padding:18px 20px}
-.sum-item .label{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8ba89e;margin-bottom:6px}
+.sum-item .label{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#888888;margin-bottom:6px}
 .sum-item .value{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:700;color:#fff}
-.sum-item .sub{font-size:.8rem;color:#8ba89e;margin-top:3px}
-.ceo-note{background:rgba(14,122,87,.2);border:1px solid rgba(14,122,87,.4);border-radius:10px;padding:16px 18px;margin-top:18px;font-size:.9rem;color:#9be8c9;font-style:italic}
-.ceo-note b{color:#7fe3bd;font-style:normal}
+.sum-item .sub{font-size:.8rem;color:#888888;margin-top:3px}
+.ceo-note{background:rgba(192,0,10,.1);border:1px solid rgba(192,0,10,.3);border-radius:10px;padding:16px 18px;margin-top:18px;font-size:.9rem;color:#ffaaaa;font-style:italic}
+.ceo-note b{color:#ff8888;font-style:normal}
 .twin{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .pill{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
-.pill.good{border-color:#bfe0d2;background:var(--acc-pale)}
+.pill.good{border-color:#cccccc;background:var(--acc-pale)}
 .pill.bad{border-color:#e8c9bc;background:#FDF5F2}
 .pill .tag{font-weight:700;font-size:.8rem;letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;margin-bottom:8px}
 .pill.good .tag{color:var(--acc)}
@@ -81,7 +81,7 @@ header.hero{padding:64px 0 48px;border-bottom:1px solid var(--line);background:l
 .vcards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column;gap:10px}
 .vcard.rec{border:2px solid var(--acc);background:var(--acc-pale)}
-.vcard .vnum{font-family:"Fraunces",serif;font-size:.75rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
+.vcard .vnum{font-family:"Fraunces",serif;font-size:.75rem;font-weight:700;color:#111111;letter-spacing:.12em;text-transform:uppercase}
 .vcard h3{font-size:1.15rem;margin:0}
 .vcard p{color:var(--muted);font-size:.9rem;flex:1}
 .vcard .vprice{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;color:var(--ink)}
@@ -89,9 +89,23 @@ header.hero{padding:64px 0 48px;border-bottom:1px solid var(--line);background:l
 .rec-tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--acc);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.06em;padding:4px 14px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
 .vtag{display:inline-block;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:999px;margin-top:4px}
 .vtag.low-risk{background:var(--acc-soft);color:var(--acc)}
-.vtag.mid-risk{background:var(--gold-soft);color:var(--gold)}
+.vtag.mid-risk{background:#EBEBEB;color:#111111}
 .vtag.fair{background:var(--acc-soft);color:var(--acc)}
-.vtag.high-mot{background:var(--gold-soft);color:var(--gold)}
+.vtag.high-mot{background:#EBEBEB;color:#111111}
+.vdetail{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:4px 0}
+.vd-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px 12px;border-bottom:1px solid var(--line);font-size:.82rem}
+.vd-row:last-child{border-bottom:none}
+.vd-key{color:var(--muted);font-weight:600}
+.vd-val{color:var(--ink)}
+.vtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;padding:4px;background:var(--card);border:1px solid var(--line);border-radius:12px;width:fit-content}
+.vtab{background:transparent;border:none;border-radius:8px;padding:9px 18px;font-family:inherit;font-size:.88rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap}
+.vtab.active{background:var(--acc);color:#fff}
+.vtab:hover:not(.active){background:var(--acc-soft);color:var(--acc)}
+.vdetail-panel{animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.vp-intro{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin-bottom:16px;box-shadow:var(--shadow)}
+.vp-badge{display:inline-block;font-size:.78rem;font-weight:700;padding:5px 12px;border-radius:999px;margin-bottom:10px}
+.vp-intro p{font-size:.95rem;color:var(--muted)}
 .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
 .scroll table{width:100%;border-collapse:collapse;min-width:580px;background:var(--card)}
 .scroll th,.scroll td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);font-size:.9rem;vertical-align:top}
@@ -105,7 +119,7 @@ header.hero{padding:64px 0 48px;border-bottom:1px solid var(--line);background:l
 .zone-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
 .zone-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line);gap:12px;flex-wrap:wrap}
 .zone-title{font-family:"Hanken Grotesk",sans-serif;font-weight:700;font-size:1rem;color:var(--ink)}
-.zone-num{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.zone-num{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#111111;margin-bottom:2px}
 .zone-pct-badge{background:var(--acc);color:#fff;font-family:"Fraunces",serif;font-weight:700;font-size:.9rem;padding:6px 14px;border-radius:999px;white-space:nowrap}
 .zone-body{padding:18px 22px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .zone-col h5{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
@@ -113,7 +127,7 @@ header.hero{padding:64px 0 48px;border-bottom:1px solid var(--line);background:l
 .criteria-list{list-style:none;display:grid;gap:7px}
 .criteria-list li{padding-left:22px;position:relative;font-size:.88rem;color:var(--ink)}
 .criteria-list li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--acc)}
-.criteria-list li.warn::before{background:var(--gold)}
+.criteria-list li.warn::before{background:#111111}
 .zone-footer{padding:12px 22px;background:var(--acc-pale);border-top:1px solid var(--line);font-size:.83rem;color:var(--muted)}
 .zone-footer b{color:var(--acc)}
 .limits-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -128,59 +142,59 @@ ul.clean li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;he
 ul.clean.no li::before{background:var(--danger)}
 .gates-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .gate-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.gate-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
-.gate-card .gnum{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.gate-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:#111111}
+.gate-card .gnum{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#111111;margin-bottom:6px}
 .gate-card h4{font-size:1rem;margin-bottom:10px}
 .gate-card p{font-size:.86rem;color:var(--muted)}
 .gate-card .garrow{font-family:"Fraunces",serif;font-size:1.5rem;color:var(--line);position:absolute;bottom:16px;right:18px}
 .calc-wrap{background:var(--ink);color:#E8E4DA;border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
 .calc-header{padding:28px 28px 22px;border-bottom:1px solid rgba(255,255,255,.1)}
 .calc-header h3{color:#fff;font-size:1.4rem;margin-bottom:4px}
-.calc-header p{color:#8ba89e;font-size:.9rem}
+.calc-header p{color:#888888;font-size:.9rem}
 .calc-settings{padding:22px 28px;border-bottom:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.calc-field label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8ba89e;display:block;margin-bottom:8px}
+.calc-field label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888888;display:block;margin-bottom:8px}
 .calc-field input[type=number]{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#fff;font-family:"Fraunces",serif;font-size:1.2rem;font-weight:700;outline:none}
 .calc-field input[type=number]:focus{border-color:rgba(127,227,189,.5);background:rgba(255,255,255,.1)}
-.calc-note{font-size:.78rem;color:#6a8a80;margin-top:6px}
+.calc-note{font-size:.78rem;color:#777777;margin-top:6px}
 .calc-zones-section{padding:0 28px}
-.calc-zones-title{padding:20px 0 14px;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8ba89e;border-bottom:1px solid rgba(255,255,255,.08)}
+.calc-zones-title{padding:20px 0 14px;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#888888;border-bottom:1px solid rgba(255,255,255,.08)}
 .czrow{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);display:grid;grid-template-columns:1fr;gap:8px}
 .czrow:last-child{border-bottom:none}
 .czrow-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .czlabel{font-size:.9rem;font-weight:600;color:#E8E4DA}
-.czperf{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:#7fe3bd}
+.czperf{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:#ff8888}
 .czshares{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.czshares label{font-size:.7rem;color:#6a8a80;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-.czshares input[type=number]{width:52px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:4px 6px;color:#7fe3bd;font-family:"Fraunces",serif;font-size:.9rem;font-weight:700;text-align:center;outline:none}
+.czshares label{font-size:.7rem;color:#777777;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.czshares input[type=number]{width:52px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:4px 6px;color:#ff8888;font-family:"Fraunces",serif;font-size:.9rem;font-weight:700;text-align:center;outline:none}
 .czshares input[type=number]:focus{border-color:rgba(127,227,189,.5)}
 .czshares .vsep{color:rgba(255,255,255,.2);font-size:.8rem}
 .share-warn{font-size:.7rem;color:#e8a87c;display:none}
 .czslider-row{display:flex;align-items:center;gap:10px}
-.czslider-row label{font-size:.7rem;color:#6a8a80;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.czslider-row label{font-size:.7rem;color:#777777;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
 .czslider-row input[type=range]{flex:1;-webkit-appearance:none;height:5px;border-radius:999px;background:rgba(255,255,255,.14);cursor:pointer}
-.czslider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#7fe3bd;cursor:pointer;border:3px solid #14201B;box-shadow:0 0 0 1px #7fe3bd}
-.czslider-row input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#7fe3bd;cursor:pointer;border:2px solid #14201B}
-.czslider-lbl{font-size:.78rem;color:#6a8a80;min-width:32px;text-align:right}
+.czslider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#ff8888;cursor:pointer;border:3px solid #111111;box-shadow:0 0 0 1px #ff8888}
+.czslider-row input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#ff8888;cursor:pointer;border:2px solid #111111}
+.czslider-lbl{font-size:.78rem;color:#777777;min-width:32px;text-align:right}
 .calc-table-wrap{padding:22px 28px 0;overflow-x:auto;border-top:1px solid rgba(255,255,255,.1)}
 .calc-table{width:100%;border-collapse:collapse;min-width:440px}
 .calc-table th,.calc-table td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.07);font-size:.88rem;text-align:center;vertical-align:middle}
-.calc-table thead th{background:rgba(255,255,255,.06);color:#8ba89e;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.12)}
+.calc-table thead th{background:rgba(255,255,255,.06);color:#888888;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.12)}
 .calc-table thead th.ctitle{text-align:left;min-width:140px}
-.calc-table thead th.crec{background:rgba(12,102,73,.3);color:#7fe3bd}
+.calc-table thead th.crec{background:rgba(192,0,10,.3);color:#ff8888}
 .calc-table tbody th{text-align:left;font-weight:600;color:#E8E4DA;background:transparent;font-size:.83rem}
 .calc-table tbody td{color:#b0c9c0}
-.calc-table tbody td.crec{color:#7fe3bd;font-weight:700;background:rgba(12,102,73,.15)}
-.calc-table tfoot th{text-align:left;font-family:"Fraunces",serif;font-size:.9rem;color:#8ba89e;font-weight:600;background:rgba(255,255,255,.03);padding-top:14px;border-top:2px solid rgba(255,255,255,.12)}
+.calc-table tbody td.crec{color:#ff8888;font-weight:700;background:rgba(192,0,10,.12)}
+.calc-table tfoot th{text-align:left;font-family:"Fraunces",serif;font-size:.9rem;color:#888888;font-weight:600;background:rgba(255,255,255,.03);padding-top:14px;border-top:2px solid rgba(255,255,255,.12)}
 .calc-table tfoot td{background:rgba(255,255,255,.03);padding-top:14px;color:#b0c9c0;font-weight:600;border-top:2px solid rgba(255,255,255,.12)}
-.calc-table tfoot td.crec{background:rgba(12,102,73,.18);color:#7fe3bd;font-weight:700}
+.calc-table tfoot td.crec{background:rgba(192,0,10,.15);color:#ff8888;font-weight:700}
 .calc-grand{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border-top:1px solid rgba(255,255,255,.1)}
 .cgrand-item{background:var(--ink);padding:22px;text-align:center}
-.cgrand-item.rec{background:rgba(12,102,73,.18)}
-.cgrand-item .cg-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8ba89e;margin-bottom:8px}
+.cgrand-item.rec{background:rgba(192,0,10,.15)}
+.cgrand-item .cg-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888888;margin-bottom:8px}
 .cgrand-item .cg-val{font-family:"Fraunces",serif;font-size:1.9rem;font-weight:700;color:#fff}
-.cgrand-item.rec .cg-val{color:#7fe3bd}
-.cgrand-item .cg-sub{font-size:.78rem;color:#6a8a80;margin-top:4px}
-.pay-box{background:var(--acc-pale);border:1px solid #bfe0d2;border-radius:var(--r);padding:20px 22px;font-size:.93rem}
+.cgrand-item.rec .cg-val{color:#ff8888}
+.cgrand-item .cg-sub{font-size:.78rem;color:#777777;margin-top:4px}
+.pay-box{background:var(--acc-pale);border:1px solid #cccccc;border-radius:var(--r);padding:20px 22px;font-size:.93rem}
 .pay-box p+p{margin-top:10px}
 .pay-box b{color:var(--ink)}
 .sign{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;box-shadow:var(--shadow)}
@@ -195,7 +209,7 @@ ul.clean.no li::before{background:var(--danger)}
 .field .cap{font-size:.74rem;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 .divider{height:1px;background:var(--line);margin:24px 0}
 .btn{margin-top:26px;background:var(--acc);color:#fff;border:none;border-radius:999px;padding:14px 28px;font-family:inherit;font-weight:600;font-size:.95rem;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:8px}
-.btn:hover{background:#0b5743}
+.btn:hover{background:#990008}
 footer{padding:40px 0 64px;color:var(--muted);font-size:.8rem}
 footer .fwrap{max-width:960px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .footer-logo{font-family:"Fraunces",serif;font-weight:700;color:var(--ink)}
@@ -349,247 +363,430 @@ footer .fwrap{max-width:960px;margin:0 auto;padding:0 24px;display:flex;justify-
   <div class="wrap">
     <div class="kicker">Tanlov</div>
     <h2 class="serif">3 variant — farqi nimada?</h2>
-    <p class="sec-lede">Uchta tizim ko'rib chiqildi. Har biri bir xil xodim uchun, lekin pul va o'sish mantigi boshqacha. Iltimos, diqqat bilan o'qing.</p>
+    <p class="sec-lede">Har bir variant bir xil xodim uchun, lekin pul mantig'i va o'sish yo'li boshqacha. Diqqat bilan o'qing — pastda tavsiyamiz bor.</p>
+
     <div class="vcards">
+      <!-- 1-VARIANT -->
       <div class="vcard">
         <div class="vnum">1-variant</div>
         <h3>Sof yordamchi + PR</h3>
-        <p>Pul faqat yordamchining o'z ishi uchun. Jamoa natijalari hisobga olinmaydi. O'sish — yordamchi greydi. Eng adolatli, lekin motivatsiya o'rtacha.</p>
-        <div class="vprice">500–5000 $ <span>/ oy</span></div>
-        <span class="vtag low-risk">Past risk</span>
-        <span class="vtag fair" style="margin-left:4px">Adolatli pul</span>
+        <p>Xodim faqat <b>o'z ishiga</b> javobgar. Sotuv, lidlar, filial natijasi — uning bonusiga ta'sir qilmaydi. Beshta aniq ish zonasi, har birining o'z summasi.</p>
+        <div class="vdetail">
+          <div class="vd-row"><span class="vd-key">Pul nima uchun</span><span class="vd-val">Faqat o'z bajarilgan ishi</span></div>
+          <div class="vd-row"><span class="vd-key">Nazorat</span><span class="vd-val">Vazifa-treker, kalendar</span></div>
+          <div class="vd-row"><span class="vd-key">O'sish yo'li</span><span class="vd-val">Assistent I → II → III greydi</span></div>
+          <div class="vd-row"><span class="vd-key">CEO vaqti</span><span class="vd-val">Oyiga ~10 daqiqa</span></div>
+        </div>
+        <div class="vprice">500 – <span id="v1max">5 000</span> $ <span>/ oy</span></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <span class="vtag low-risk">Past risk</span>
+          <span class="vtag fair">Adolatli pul</span>
+          <span class="vtag" style="background:#EBEBEB;color:#111111">O'rtacha motivatsiya</span>
+        </div>
       </div>
+
+      <!-- 2-VARIANT -->
       <div class="vcard">
         <div class="vnum">2-variant</div>
         <h3>Rotatsiya-yordamchi</h3>
-        <p>Mukofot jamoa natijasiga (50%) va uning intizomiga (40%) bog'lanadi. Kamchilik: tarmoq yomon oy ko'rsa, u o'z aybisiz kam oladi.</p>
-        <div class="vprice">300–5000 $ <span>/ oy</span></div>
-        <span class="vtag mid-risk">O'rtacha risk</span>
-        <span class="vtag high-mot" style="margin-left:4px">Yuqori motivatsiya</span>
+        <p>Xodim Marketing → Sotuv → Filial ochish bosqichlarida ishlaydi. Bonus <b>50% o'z ishi + 50% jamoa natijasi</b>. Har bosqichda o'z ko'rsatkichi.</p>
+        <div class="vdetail">
+          <div class="vd-row"><span class="vd-key">Bosqich 1 — Marketing</span><span class="vd-val">Lid soni ko'rsatkichi</span></div>
+          <div class="vd-row"><span class="vd-key">Bosqich 2 — Sotuv</span><span class="vd-val">Sotuv hajmi $ ko'rsatkichi</span></div>
+          <div class="vd-row"><span class="vd-key">Bosqich 3 — Filial</span><span class="vd-val">Filial daromadi $ ko'rsatkichi</span></div>
+          <div class="vd-row"><span class="vd-key">O'sish yo'li</span><span class="vd-val">Biznes-geytlar orqali (pul oshadi)</span></div>
+          <div class="vd-row"><span class="vd-key">Risk</span><span class="vd-val">Jamoa yomon bo'lsa — u ham kam oladi</span></div>
+        </div>
+        <div class="vprice">500 – <span id="v2max">5 000</span> $ <span>/ oy</span></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <span class="vtag mid-risk">O'rtacha risk</span>
+          <span class="vtag high-mot">Yuqori motivatsiya</span>
+          <span class="vtag" style="background:#faeae4;color:#9b3a20">Jamoa riskiga bog'liq</span>
+        </div>
       </div>
+
+      <!-- 3-VARIANT -->
       <div class="vcard rec">
         <span class="rec-tag">&#10022; Tavsiya</span>
         <div class="vnum">3-variant</div>
         <h3>Gibrid</h3>
-        <p>Ikki mustaqil kontur: <b>pul</b> — bajarilgan ish uchun (1-variant kabi); <b>o'sish</b> — biznes-geytlar lavozimni oshiradi, oylik mukofotni emas. Eng yaxshi yechim.</p>
-        <div class="vprice">500–5000 $ <span>/ oy</span></div>
-        <span class="vtag low-risk">Past risk</span>
-        <span class="vtag high-mot" style="margin-left:4px">Yuqori motivatsiya</span>
+        <p><b>Pul</b> — 1-variant kabi: faqat o'z bajarilgan ishi uchun (adolatli, xavfsiz). <b>O'sish</b> — 2-variant kabi: biznes-geytlar orqali lavozim va maosh oshadi.</p>
+        <div class="vdetail" style="border-color:#cccccc">
+          <div class="vd-row"><span class="vd-key">Oylik pul</span><span class="vd-val" style="color:var(--acc)">1-variant mantiq'i (o'z ishi)</span></div>
+          <div class="vd-row"><span class="vd-key">Karyera o'sish</span><span class="vd-val" style="color:var(--acc)">2-variant geytlari (biznes natija)</span></div>
+          <div class="vd-row"><span class="vd-key">Nazorat</span><span class="vd-val">Vazifa-treker, kalendar</span></div>
+          <div class="vd-row"><span class="vd-key">CEO vaqti</span><span class="vd-val">Oyiga ~10 daqiqa</span></div>
+          <div class="vd-row"><span class="vd-key">Xodim uchun</span><span class="vd-val" style="color:var(--acc)">Adolatli pul + katta o'sish imkoni</span></div>
+        </div>
+        <div class="vprice">500 – <span id="v3max">5 000</span> $ <span>/ oy</span></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <span class="vtag low-risk">Past risk</span>
+          <span class="vtag high-mot">Yuqori motivatsiya</span>
+          <span class="vtag fair">Eng muvozanatli</span>
+        </div>
       </div>
     </div>
-    <div class="scroll" style="margin-top:24px">
+
+    <!-- Taqqoslash jadvali -->
+    <div class="scroll" style="margin-top:28px">
       <table>
         <thead>
-          <tr>
-            <th>Mezon</th><th>1-variant</th><th>2-variant</th><th class="rec">3-variant &#10022;</th>
-          </tr>
+          <tr><th>Mezon</th><th>1-variant</th><th>2-variant</th><th class="rec">3-variant &#10022;</th></tr>
         </thead>
         <tbody>
-          <tr><th>Pul nima uchun?</th><td>O'z ishi uchun</td><td>Jamoa natijasi + intizom</td><td class="rec">O'z ishi uchun</td></tr>
-          <tr><th>Nima uchun ko'tariladi?</th><td>Yordamchi greydi</td><td>Biznes-geytlar (pul oshadi)</td><td class="rec">Biznes-geytlar (lavozim oshadi)</td></tr>
-          <tr><th>Adolatli to'lovmi?</th><td class="check">&#10003; Ha</td><td>O'rtacha</td><td class="rec check">&#10003; Ha</td></tr>
+          <tr><th>Oylik pul nima uchun?</th><td>Faqat o'z ishi</td><td>O'z ishi (50%) + jamoa natijasi (50%)</td><td class="rec">Faqat o'z ishi</td></tr>
+          <tr><th>Jamoa natijasiga bog'liqmi?</th><td class="check">&#10007; Yo'q</td><td>&#10003; Ha — lid, sotuv, filial</td><td class="rec check">&#10007; Yo'q</td></tr>
+          <tr><th>Karyera o'sish yo'li</th><td>Yordamchi greydi (I→II→III)</td><td>Biznes-geytlar (maosh oshadi)</td><td class="rec">Biznes-geytlar (lavozim oshadi)</td></tr>
+          <tr><th>Adolatli to'lovmi?</th><td class="check">&#10003; Ha</td><td>O'rtacha (jamoa riskiga bog'liq)</td><td class="rec check">&#10003; Ha</td></tr>
           <tr><th>Motivatsiya kuchli?</th><td>O'rtacha</td><td class="check">&#10003; Ha</td><td class="rec check">&#10003; Ha</td></tr>
-          <tr><th>CEO uchun nazorat oson?</th><td class="check">&#10003; Ha</td><td class="cross">&#10007; Yo'q</td><td class="rec check">&#10003; Ha</td></tr>
+          <tr><th>CEO uchun nazorat oson?</th><td class="check">&#10003; Ha</td><td class="cross">&#10007; Qiyinroq</td><td class="rec check">&#10003; Ha</td></tr>
           <tr><th>Xodim uchun risk?</th><td>Past</td><td>O'rtacha</td><td class="rec">Past</td></tr>
+          <tr><th>Eng mos kim uchun?</th><td>Barqaror, ishonchli xodim</td><td>Ambitsiyali, yuqori risk tolerantli</td><td class="rec">Barqaror + o'sishga intiluvchi</td></tr>
         </tbody>
       </table>
     </div>
+
     <div class="pay-box" style="margin-top:20px">
-      <p><b>Nima uchun 3-variant?</b> — Pul va o'sish ajratilgan: xodim har oy bajarilgan ish uchun adolatli oladi, lekin katta natijalar ko'rsatsa — lavozimi oshadi. Bu ikkala kontur bir-biriga xalaqit bermaydi.</p>
+      <p><b>Nima uchun 3-variant tavsiya?</b> — Xodim har oy faqat o'z mehnatiga yarasha oladi (1-variant adolatli puli). Agar u biznes ko'rsatkichlarini ham ko'tarsa — lavozimi va maoshi oshadi (2-variant motivatsiyasi). Ikki kontur bir-biriga xalaqit bermaydi.</p>
     </div>
   </div>
 </section>
 
 <section id="zones">
   <div class="wrap">
-    <div class="kicker">Lavozim kartasi · 3-variant bo'yicha</div>
-    <h2 class="serif">5 zona — nima qiladi va 100% olish uchun nima kerak</h2>
-    <p class="sec-lede">Har bir zona uchun: xodim nima qiladi, "100% bajarildi" degani nima, va siz qanday tekshirasiz.</p>
+    <div class="kicker">Lavozim kartasi</div>
+    <h2 class="serif">Variant bo'yicha tafsilotlar</h2>
+    <p class="sec-lede">Har bir variant uchun: xodim nima qiladi, 100% olish uchun mezonlar, va to'lov tuzilishi.</p>
 
-    <div class="zone-card">
-      <div class="zone-head">
-        <div>
-          <div class="zone-num">Zona 1 · 35% dan B</div>
-          <div class="zone-title">Bosh direktorning shaxsiy topshiriqlari</div>
-        </div>
-        <div class="zone-pct-badge">Maks: <span class="zmax1">1 575</span> $</div>
-      </div>
-      <div class="zone-body">
-        <div class="zone-col">
-          <h5>Nima qiladi</h5>
-          <p class="zone-what">CEO ning shaxsiy topshiriqlarini — hujjatlar tayyorlash, uchrashuvlar tashkil etish, ma'lumotlar yig'ish, xat-xabar yuborish — eslatmasdan va o'z vaqtida bajaradi.</p>
-          <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
-          <p class="zone-what">Vazifa-treker (Notion, Telegram-bot) yoki Excel reyestri. Har oy yakunida yopilgan/yopilmagan topshiriqlar hisoblanadi.</p>
-        </div>
-        <div class="zone-col">
-          <h5>100% olish uchun mezonlar</h5>
-          <ul class="criteria-list">
-            <li>Barcha topshiriqlar belgilangan muddatda yopilgan</li>
-            <li>Birorta ham topshiriq eslatmasiz qolmagan</li>
-            <li>Muddati yaqinlashganda CEO ga oldindan xabar berilgan</li>
-            <li>Muddati o'tgan topshiriq soni: 0</li>
-          </ul>
-          <ul class="criteria-list" style="margin-top:10px">
-            <li class="warn">80–99%: 1–2 kechikish bor, lekin xabar berilgan</li>
-            <li class="warn">50–79%: 3+ kechikish yoki xabarsiz qolganlar bor</li>
-          </ul>
-        </div>
-      </div>
-      <div class="zone-footer"><b>Nima uchun eng katta zona (35%)?</b> — Bu CEO ning eng muhim va eng ko'p vaqt oladigan ishi. Agar bu yaxshi ishlamasa — boshqa hamma narsa ma'nosiz.</div>
+    <!-- Variant tablar -->
+    <div class="vtabs">
+      <button class="vtab active" onclick="showVariant(1,this)">1-variant — Sof yordamchi</button>
+      <button class="vtab" onclick="showVariant(2,this)">2-variant — Rotatsiya</button>
+      <button class="vtab" onclick="showVariant(3,this)">3-variant — Gibrid &#10022;</button>
     </div>
 
-    <div class="zone-card">
-      <div class="zone-head">
-        <div>
-          <div class="zone-num">Zona 2 · 25% dan B</div>
-          <div class="zone-title">PR va kommunikatsiya</div>
-        </div>
-        <div class="zone-pct-badge">Maks: <span class="zmax2">1 125</span> $</div>
+    <!-- 1-VARIANT TAFSILOT -->
+    <div class="vdetail-panel" id="vp1">
+      <div class="vp-intro">
+        <div class="vp-badge" style="background:var(--acc-soft);color:var(--acc)">Faqat o'z ishi uchun pul · O'sish = yordamchi greydi</div>
+        <p>Xodim beshta aniq ish zonasida ishlaydi. Har zona uchun alohida to'lov. Jamoa natijalari, sotuv, lidlar — uning bonusiga ta'sir qilmaydi.</p>
       </div>
-      <div class="zone-body">
-        <div class="zone-col">
-          <h5>Nima qiladi</h5>
-          <p class="zone-what">Kontent-reja bo'yicha matn, post va taqdimotlar tayyorlaydi, brend qoidalariga mos holda chiqaradi. CEO va kompaniya nomidan tashqi kommunikatsiya.</p>
-          <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
-          <p class="zone-what">Kontent-kalendar + muharrir tekshiruvi (CEO emas). CEO faqat umumiy natijani ko'radi.</p>
+
+      <div class="zone-card">
+        <div class="zone-head">
+          <div><div class="zone-num">Zona 1 · 35% dan B</div><div class="zone-title">Bosh direktorning shaxsiy topshiriqlari</div></div>
+          <div class="zone-pct-badge">Maks: <span class="zmax1">1 575</span> $</div>
         </div>
-        <div class="zone-col">
-          <h5>100% olish uchun mezonlar</h5>
-          <ul class="criteria-list">
-            <li>Barcha rejalashtirilgan postlar o'z vaqtida chiqdi</li>
-            <li>Hech qaysi post brend-kitobga zid emas</li>
-            <li>Xato yoki tuzatish talab etilgan material: 0</li>
-            <li>Kontent-kalendar oyning boshida tayyor</li>
-          </ul>
-          <ul class="criteria-list" style="margin-top:10px">
-            <li class="warn">80–99%: 1–2 kechikish yoki kichik tuzatish</li>
-            <li class="warn">50–79%: 3+ nosozlik yoki brend buzilishi bor</li>
-          </ul>
+        <div class="zone-body">
+          <div class="zone-col">
+            <h5>Nima qiladi</h5>
+            <p class="zone-what">CEO ning shaxsiy topshiriqlarini — hujjatlar tayyorlash, uchrashuvlar tashkil etish, ma'lumotlar yig'ish, xat-xabar yuborish — eslatmasdan va o'z vaqtida bajaradi.</p>
+            <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
+            <p class="zone-what">Vazifa-treker (Notion, Telegram-bot) yoki Excel reyestri. Har oy yakunida yopilgan/yopilmagan topshiriqlar hisoblanadi.</p>
+          </div>
+          <div class="zone-col">
+            <h5>100% olish uchun mezonlar</h5>
+            <ul class="criteria-list">
+              <li>Barcha topshiriqlar belgilangan muddatda yopilgan</li>
+              <li>Birorta ham topshiriq eslatmasiz qolmagan</li>
+              <li>Muddati yaqinlashganda CEO ga oldindan xabar berilgan</li>
+              <li>Muddati o'tgan topshiriq soni: 0</li>
+            </ul>
+            <ul class="criteria-list" style="margin-top:10px">
+              <li class="warn">80–99%: 1–2 kechikish, lekin xabar berilgan</li>
+              <li class="warn">50–79%: 3+ kechikish yoki xabarsiz qolganlar</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-footer"><b>Nima uchun eng katta zona (35%)?</b> — CEO ning eng muhim ishi. Agar bu yaxshi ishlamasa — boshqa hamma narsa ma'nosiz.</div>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-head">
+          <div><div class="zone-num">Zona 2 · 25% dan B</div><div class="zone-title">PR va kommunikatsiya</div></div>
+          <div class="zone-pct-badge">Maks: <span class="zmax2">1 125</span> $</div>
+        </div>
+        <div class="zone-body">
+          <div class="zone-col">
+            <h5>Nima qiladi</h5>
+            <p class="zone-what">Kontent-reja bo'yicha matn, post va taqdimotlar tayyorlaydi, brend qoidalariga mos holda chiqaradi. CEO va kompaniya nomidan tashqi kommunikatsiya.</p>
+            <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
+            <p class="zone-what">Kontent-kalendar + muharrir tekshiruvi (CEO emas). CEO faqat umumiy natijani ko'radi.</p>
+          </div>
+          <div class="zone-col">
+            <h5>100% olish uchun mezonlar</h5>
+            <ul class="criteria-list">
+              <li>Barcha rejalashtirilgan postlar o'z vaqtida chiqdi</li>
+              <li>Hech qaysi post brend-kitobga zid emas</li>
+              <li>Xato yoki tuzatish talab qilingan material: 0</li>
+              <li>Kontent-kalendar oyning boshida tayyor</li>
+            </ul>
+            <ul class="criteria-list" style="margin-top:10px">
+              <li class="warn">80–99%: 1–2 kechikish yoki kichik tuzatish</li>
+              <li class="warn">50–79%: 3+ nosozlik yoki brend buzilishi</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-footer"><b>Eslatma:</b> Kontent sifatini muharrir baholaydi — CEO emas. Bu CEO vaqtini tejaydi.</div>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-head">
+          <div><div class="zone-num">Zona 3 · 15% dan B</div><div class="zone-title">CEO topshiriqlari reyestri</div></div>
+          <div class="zone-pct-badge">Maks: <span class="zmax3">675</span> $</div>
+        </div>
+        <div class="zone-body">
+          <div class="zone-col">
+            <h5>Nima qiladi</h5>
+            <p class="zone-what">CEO ning barcha shaxsiy topshiriqlarini yagona reyestrda yuritadi. Statuslarni dolzarb saqlaydi, CEO ga haftalik hisobot beradi. <b>Chegara:</b> Ijroni qistamaydi — bu COO ishi.</p>
+            <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
+            <p class="zone-what">CEO reyestrni istalgan vaqt ochib ko'rishi mumkin. Haftalik 5 daqiqa — hammasi ko'rinadi.</p>
+          </div>
+          <div class="zone-col">
+            <h5>100% olish uchun mezonlar</h5>
+            <ul class="criteria-list">
+              <li>Reyestr to'liq — birorta topshiriq tushirib qoldirilmagan</li>
+              <li>Har bir topshiriqning statusi yangilangan (so'nggi 24 soat)</li>
+              <li>Muddati yaqinlashgan topshiriqlar oldindan belgilangan</li>
+              <li>Haftalik hisobot jo'natilgan</li>
+            </ul>
+            <ul class="criteria-list" style="margin-top:10px">
+              <li class="warn">80–99%: reyestr bor, 1–2 status yangilanmagan</li>
+              <li class="warn">50–79%: reyestr to'liq emas yoki hisobot yo'q</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-footer"><b>CEO uchun foyda:</b> Hamma topshiriqlar bir joyda — siz hech narsani yodingizda tutmasdan ishlaysiz.</div>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-head">
+          <div><div class="zone-num">Zona 4 · 15% dan B</div><div class="zone-title">Bosh direktor yig'ilishlari sikli</div></div>
+          <div class="zone-pct-badge">Maks: <span class="zmax4">675</span> $</div>
+        </div>
+        <div class="zone-body">
+          <div class="zone-col">
+            <h5>Nima qiladi</h5>
+            <p class="zone-what">Har bir yig'ilishdan oldin: kun tartibi va materiallarni tayyorlaydi. Yig'ilishdan so'ng: qarorlar va vazifalar bilan bayonnoma tarqatadi.</p>
+            <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
+            <p class="zone-what">Kalendar + tarqatish fakti (email yoki Telegram). Oddiy va tekshirish oson.</p>
+          </div>
+          <div class="zone-col">
+            <h5>100% olish uchun mezonlar</h5>
+            <ul class="criteria-list">
+              <li>Kun tartibi har yig'ilishdan min. 2 soat oldin tayyor</li>
+              <li>Bayonnoma yig'ilishdan so'ng 24 soat ichida tarqatilgan</li>
+              <li>Bayonnomada barcha qarorlar va mas'ul shaxslar ko'rsatilgan</li>
+              <li>Birorta ham yig'ilish o'tkazib yuborilmagan</li>
+            </ul>
+            <ul class="criteria-list" style="margin-top:10px">
+              <li class="warn">80–99%: 1 yig'ilish uchun kechikish bor</li>
+              <li class="warn">50–79%: 3+ yig'ilish uchun material tayyor bo'lmagan</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-footer"><b>CEO uchun foyda:</b> Yig'ilishga tayyor kelsangiz — vaqtingiz tejaladi. Bayonnoma bo'lsa — kim nima qilishi aniq.</div>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-head">
+          <div><div class="zone-num">Zona 5 · 10% dan B</div><div class="zone-title">Tashabbuskorlik va ishonchlilik</div></div>
+          <div class="zone-pct-badge">Maks: <span class="zmax5">450</span> $</div>
+        </div>
+        <div class="zone-body">
+          <div class="zone-col">
+            <h5>Nima qiladi</h5>
+            <p class="zone-what">Topshiriq kutmasdan muammolarni ko'radi va hal etadi. Maxfiylikni saqlaydi. CEO ga noqulayliklar bo'lmasdan ishlashga sharoit yaratadi.</p>
+            <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
+            <p class="zone-what"><b>Yagona subyektiv zona (10%).</b> CEO oyda bir bor 0–100 ball beradi. Boshqa 4 zona ob'ektiv.</p>
+          </div>
+          <div class="zone-col">
+            <h5>100% olish uchun mezonlar</h5>
+            <ul class="criteria-list">
+              <li>Kamida 2 ta o'z tashabbus bilan bajargani bo'ldi</li>
+              <li>Maxfiy ma'lumotlar saqlanish faktlari mavjud</li>
+              <li>CEO bilan muloqot qulay va qovushqoq bo'ldi</li>
+              <li>Noqulaylik yoki qo'shimcha stress yaratmadi</li>
+            </ul>
+            <ul class="criteria-list" style="margin-top:10px">
+              <li class="warn">CEO ning 80–99% bahosi yetarli</li>
+              <li class="warn">50% dan past — ish uslubida yirik muammo</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-footer"><b>Nima uchun faqat 10%?</b> — Subyektiv baholash kichik bo'lishi kerak. Asosiy pul ob'ektiv ish uchun.</div>
+      </div>
+
+      <div class="limits-grid" style="margin-top:8px">
+        <div class="limit-card">
+          <h4><span class="dot dot-green"></span> Xodim nima QILADI</h4>
+          <ul class="clean"><li>Topshiriqlar reyestrini yuritadi</li><li>Materiallar, taqdimotlar, matnlar tayyorlaydi</li><li>Yig'ilish brifi va bayonnomalarini boshqaradi</li><li>CEO ga kunlik/haftalik status xabar beradi</li><li>Kontent-reja bo'yicha ijtimoiy tarmoq ishini olib boradi</li></ul>
+        </div>
+        <div class="limit-card">
+          <h4><span class="dot dot-red"></span> Xodim nima QILMAYDI</h4>
+          <ul class="clean no"><li>Xodimlarga buyruq bermaydi — bu COO zonasi</li><li>Operatsion ijroni qistamaydi yoki boshqarmaydi</li><li>Yig'ilishdan chiqqan operatsion vazifalarni ijro etmaydi</li><li>Moliyaviy qaror yoki imzolash vakolati yo'q</li></ul>
         </div>
       </div>
-      <div class="zone-footer"><b>Eslatma:</b> Kontent sifatini muharrir baholaydi — CEO emas. Bu CEO vaqtini tejaydi.</div>
     </div>
 
-    <div class="zone-card">
-      <div class="zone-head">
-        <div>
-          <div class="zone-num">Zona 3 · 15% dan B</div>
-          <div class="zone-title">CEO topshiriqlari reyestri</div>
-        </div>
-        <div class="zone-pct-badge">Maks: <span class="zmax3">675</span> $</div>
+    <!-- 2-VARIANT TAFSILOT -->
+    <div class="vdetail-panel" id="vp2" style="display:none">
+      <div class="vp-intro">
+        <div class="vp-badge" style="background:#EBEBEB;color:#111111">50% o'z ishi + 50% jamoa natijasi · Marketing → Sotuv → Filial rotatsiyasi</div>
+        <p>Xodim 3 bosqichdan o'tadi — har bosqichda o'z ko'rsatkichi bilan. Bonus ikki qismdan: o'z bajarilgan ishi (50%) va tegishli bosqich ko'rsatkichi (50%).</p>
       </div>
-      <div class="zone-body">
-        <div class="zone-col">
-          <h5>Nima qiladi</h5>
-          <p class="zone-what">CEO ning barcha shaxsiy topshiriqlarini yagona reyestrda yuritadi. Statuslarni dolzarb saqlaydi, CEO ga haftalik hisobot beradi.</p>
-          <p class="zone-what" style="margin-top:8px"><b>Chegara:</b> Ijroni qistamaydi — bu COO ishi. Faqat qayd etadi va xabar beradi.</p>
-          <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
-          <p class="zone-what">CEO reyestrni istalgan vaqt ochib ko'rishi mumkin. Haftalik 5 daqiqa — hammasi ko'rinadi.</p>
+
+      <div class="zone-card" style="border-top:3px solid #111111">
+        <div class="zone-head">
+          <div><div class="zone-num" style="color:var(--acc)">Bosqich 1 — Marketing</div><div class="zone-title">Lid generatsiya ko'rsatkichi</div></div>
+          <div class="zone-pct-badge" style="background:#111111">Jamoa natijasi: Lid soni</div>
         </div>
-        <div class="zone-col">
-          <h5>100% olish uchun mezonlar</h5>
-          <ul class="criteria-list">
-            <li>Reyestr to'liq — birorta topshiriq yo'q emas</li>
-            <li>Har bir topshiriqning statusi yangilangan (so'nggi 24 soat)</li>
-            <li>Muddati yaqinlashgan topshiriqlar oldindan belgilangan</li>
-            <li>Haftalik hisobot jo'natilgan</li>
-          </ul>
-          <ul class="criteria-list" style="margin-top:10px">
-            <li class="warn">80–99%: reyestr bor, lekin 1–2 status yangilanmagan</li>
-            <li class="warn">50–79%: reyestr to'liq emas yoki hisobot yo'q</li>
-          </ul>
+        <div class="zone-body">
+          <div class="zone-col">
+            <h5>Xodim nima qiladi (bu bosqichda)</h5>
+            <p class="zone-what">Marketing jamoasi bilan birgalikda ishlaydi: kontent, taqdimotlar, kampaniyalar uchun materiallar tayyorlaydi. CEO topshiriqlarini parallél bajaradi.</p>
+            <h5 style="margin-top:14px">O'z ishi (50% bonus)</h5>
+            <p class="zone-what">1-variantdagi 5 zona bo'yicha bajarilgan ish (topshiriqlar, PR, reyestr, yig'ilishlar, tashabbuskorlik).</p>
+          </div>
+          <div class="zone-col">
+            <h5>Jamoa natijasi (50% bonus) — 100% uchun</h5>
+            <ul class="criteria-list">
+              <li>Oylik lid maqsadi bajarilgan (maqsad: ____ lid)</li>
+              <li>Call-markaz tasdiqlagan sifatli lidlar</li>
+              <li>5 filialdan 10 000 + Toshkentdan 6 000 = 16 000 jami</li>
+              <li>2 oy ketma-ket bajarilgan → Bosqich 2 ga o'tish</li>
+            </ul>
+            <ul class="criteria-list" style="margin-top:10px">
+              <li class="warn">80–99%: lid maqsadining 80%+ bajarildi</li>
+              <li class="warn">50–79%: lid maqsadining 50–79% bajarildi</li>
+            </ul>
+          </div>
         </div>
+        <div class="zone-footer" style="background:#F0F0F0"><b>Muhim:</b> Jamoa natijalari yomon bo'lsa — xodim o'z aybisiz bonus yo'qotishi mumkin. Bu bu variantning asosiy riskidir.</div>
       </div>
-      <div class="zone-footer"><b>CEO uchun foyda:</b> Siz hech narsani yodingizda tutmasdan — hamma topshiriqlar bir joyda ko'rinadi.</div>
+
+      <div class="zone-card" style="border-top:3px solid var(--acc)">
+        <div class="zone-head">
+          <div><div class="zone-num" style="color:var(--acc)">Bosqich 2 — Sotuv</div><div class="zone-title">Sotuv hajmi ko'rsatkichi</div></div>
+          <div class="zone-pct-badge">Jamoa natijasi: Sotuv $</div>
+        </div>
+        <div class="zone-body">
+          <div class="zone-col">
+            <h5>Xodim nima qiladi (bu bosqichda)</h5>
+            <p class="zone-what">Sotuv jamoasi bilan ishlaydi: mijozlar uchun materiallar, taqdimotlar, shartnomalar tayyorlaydi. CEO topshiriqlarini parallél bajaradi.</p>
+            <h5 style="margin-top:14px">O'z ishi (50% bonus)</h5>
+            <p class="zone-what">1-variantdagi 5 zona bo'yicha bajarilgan ish.</p>
+          </div>
+          <div class="zone-col">
+            <h5>Jamoa natijasi (50% bonus) — 100% uchun</h5>
+            <ul class="criteria-list">
+              <li>Oylik sotuv maqsadi bajarilgan (maqsad: ____ $)</li>
+              <li>Jami tarmoq bo'yicha sotuv hajmi</li>
+              <li>Yangi shartnomalar soni maqsadda</li>
+              <li>2 oy ketma-ket bajarilgan → Bosqich 3 ga o'tish</li>
+            </ul>
+            <ul class="criteria-list" style="margin-top:10px">
+              <li class="warn">80–99%: sotuv maqsadining 80%+ bajarildi</li>
+              <li class="warn">50–79%: sotuv maqsadining 50–79% bajarildi</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-footer"><b>O'tish sharti:</b> Sotuv maqsadi 2 oy ketma-ket + oylik baho ≥85%.</div>
+      </div>
+
+      <div class="zone-card" style="border-top:3px solid #111111">
+        <div class="zone-head">
+          <div><div class="zone-num" style="color:#111111">Bosqich 3 — Filial ochish</div><div class="zone-title">Filial daromadi ko'rsatkichi</div></div>
+          <div class="zone-pct-badge" style="background:#111111">Jamoa natijasi: Filial daromadi</div>
+        </div>
+        <div class="zone-body">
+          <div class="zone-col">
+            <h5>Xodim nima qiladi (bu bosqichda)</h5>
+            <p class="zone-what">Yangi filial ochish jarayoniga jalb etiladi: hujjatlar, koordinatsiya, CEO topshiriqlari. Rivojlanish jamoasi bilan ishlaydi.</p>
+            <h5 style="margin-top:14px">O'z ishi (50% bonus)</h5>
+            <p class="zone-what">1-variantdagi 5 zona bo'yicha bajarilgan ish.</p>
+          </div>
+          <div class="zone-col">
+            <h5>Jamoa natijasi (50% bonus) — 100% uchun</h5>
+            <ul class="criteria-list">
+              <li>Tarmoq bo'yicha o'rtacha ≥ 500 000 $ / filial oyiga</li>
+              <li>Yangi filial muvaffaqiyatli ochildi va ishlamoqda</li>
+              <li>2 oy ketma-ket bajarilgan</li>
+            </ul>
+            <ul class="criteria-list" style="margin-top:10px">
+              <li class="warn">80–99%: 400 000–500 000 $ / filial</li>
+              <li class="warn">50–79%: 250 000–400 000 $ / filial</li>
+            </ul>
+          </div>
+        </div>
+        <div class="zone-footer" style="background:#F0F0F0"><b>Bu bosqich = eng yuqori pul imkoni.</b> Filial muvaffaqiyatli bo'lsa — maksimal bonus.</div>
+      </div>
     </div>
 
-    <div class="zone-card">
-      <div class="zone-head">
-        <div>
-          <div class="zone-num">Zona 4 · 15% dan B</div>
-          <div class="zone-title">Bosh direktor yig'ilishlari sikli</div>
-        </div>
-        <div class="zone-pct-badge">Maks: <span class="zmax4">675</span> $</div>
+    <!-- 3-VARIANT TAFSILOT -->
+    <div class="vdetail-panel" id="vp3" style="display:none">
+      <div class="vp-intro">
+        <div class="vp-badge" style="background:var(--acc-soft);color:var(--acc)">Oylik pul = 1-variant · Karyera o'sish = 2-variant geytlari</div>
+        <p>Ikki mustaqil kontur birlashtirilgan. Xodim har oy o'z bajarilgan ishi uchun adolatli pul oladi (1-variant). Agar biznes ko'rsatkichlarni ham ko'tarsa — lavozimi va maoshi oshadi (2-variant geytlari asosida).</p>
       </div>
-      <div class="zone-body">
-        <div class="zone-col">
-          <h5>Nima qiladi</h5>
-          <p class="zone-what">Har bir yig'ilishdan oldin: kun tartibi va materiallarni tayyorlaydi. Yig'ilishdan so'ng: qarorlar va vazifalar bilan bayonnoma tarqatadi.</p>
-          <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
-          <p class="zone-what">Kalendar + tarqatish fakti (email yoki Telegram). Oddiy va tekshirish oson.</p>
+
+      <div class="zone-card" style="border:2px solid var(--acc)">
+        <div class="zone-head" style="background:var(--acc-pale)">
+          <div><div class="zone-num">Kontur 1 — Oylik pul</div><div class="zone-title">1-variant kabi: 5 zona, bajarilgan ish uchun</div></div>
+          <div class="zone-pct-badge">Maks: <span id="v3bonus">4 500</span> $ bonus</div>
         </div>
-        <div class="zone-col">
-          <h5>100% olish uchun mezonlar</h5>
-          <ul class="criteria-list">
-            <li>Har bir yig'ilish uchun kun tartibi oldindan tayyor (min. 2 soat oldin)</li>
-            <li>Bayonnoma yig'ilishdan so'ng 24 soat ichida tarqatilgan</li>
-            <li>Bayonnomada barcha qarorlar va mas'ul shaxslar ko'rsatilgan</li>
-            <li>Birorta ham o'tkazib yuborilmagan</li>
-          </ul>
-          <ul class="criteria-list" style="margin-top:10px">
-            <li class="warn">80–99%: 1 yig'ilish uchun kechikish bor</li>
-            <li class="warn">50–79%: 3+ yig'ilish uchun material tayyor bo'lmagan</li>
-          </ul>
+        <div class="zone-body">
+          <div class="zone-col">
+            <h5>Nima qiladi</h5>
+            <p class="zone-what">Xuddi 1-variantdagi 5 zona: CEO topshiriqlari, PR/kommunikatsiya, reyestr, yig'ilishlar sikli, tashabbuskorlik. Har zona uchun aniq mezonlar.</p>
+            <h5 style="margin-top:14px">Afzalligi</h5>
+            <p class="zone-what">Jamoa natijasiga bog'liq emas. Xodim har oy faqat o'z mehnatiga yarasha oladi. Adolatli va xavfsiz.</p>
+          </div>
+          <div class="zone-col">
+            <h5>To'lov tuzilishi</h5>
+            <ul class="criteria-list">
+              <li>Belgilangan maosh: har doim to'lanadi</li>
+              <li>Zona 1 (35%): shaxsiy topshiriqlar</li>
+              <li>Zona 2 (25%): PR va kommunikatsiya</li>
+              <li>Zona 3 (15%): topshiriqlar reyestri</li>
+              <li>Zona 4 (15%): yig'ilishlar sikli</li>
+              <li>Zona 5 (10%): tashabbuskorlik</li>
+            </ul>
+            <p class="zone-what" style="margin-top:10px;font-style:italic;font-size:.82rem">Zona foizlari kalkulyatorda o'zgartiriladi.</p>
+          </div>
         </div>
+        <div class="zone-footer" style="background:var(--acc-pale)"><b>Kontur 1 xulosasi:</b> Oylik pul — xodimning nazoratida. U qancha ishlasa, shuncha oladi.</div>
       </div>
-      <div class="zone-footer"><b>CEO uchun foyda:</b> Yig'ilishga tayyor kelsangiz — vaqtingiz tejaladi. Bayonnoma bo'lsa — kim nima qilishi aniq.</div>
+
+      <div class="zone-card" style="border:2px solid #111111">
+        <div class="zone-head" style="background:#F0F0F0">
+          <div><div class="zone-num" style="color:#111111">Kontur 2 — Karyera o'sish</div><div class="zone-title">2-variant geytlari: Marketing → Sotuv → Filial</div></div>
+          <div class="zone-pct-badge" style="background:#111111">Lavozim va maosh oshadi</div>
+        </div>
+        <div class="zone-body">
+          <div class="zone-col">
+            <h5>Nima qiladi</h5>
+            <p class="zone-what">Oylik ish bajarilgandan tashqari, xodim biznes ko'rsatkichlarini ham kuzatib boradi va hissa qo'shadi. Marketing, sotuv va filial ochishda jalb etiladi.</p>
+            <h5 style="margin-top:14px">Farqi 2-variantdan</h5>
+            <p class="zone-what">Geytlar <b>oylik mukofotni emas</b> — lavozim va maoshni oshiradi. Xodim geytga yetsa — yangi lavozim va yangi maosh darajasi.</p>
+          </div>
+          <div class="zone-col">
+            <h5>O'sish geytlari</h5>
+            <ul class="criteria-list">
+              <li><b>Geyt 1:</b> 16 000 sifatli lid, 2 oy + baho ≥85% → Sotuv yordamchisi</li>
+              <li><b>Geyt 2:</b> ≥500 000 $/filial, 2 oy + baho ≥85% → Rivojlanish yordamchisi</li>
+              <li><b>Geyt 3:</b> Biznes-keys himoyasi + CEO tasdig'i → Yangi lavozim</li>
+            </ul>
+            <p class="zone-what" style="margin-top:10px;font-size:.82rem;font-style:italic">Har bir geytda: biznes natijasi VA yaxshi baho — ikkalasi bir vaqtda bo'lishi shart.</p>
+          </div>
+        </div>
+        <div class="zone-footer" style="background:#F0F0F0"><b>Nima uchun bu eng yaxshi?</b> — Xodim har oy adolatli pul oladi. Katta natijalar ko'rsatsa — lavozimi oshadi. Ikkisi bir-biriga xalaqit bermaydi.</div>
+      </div>
     </div>
 
-    <div class="zone-card">
-      <div class="zone-head">
-        <div>
-          <div class="zone-num">Zona 5 · 10% dan B</div>
-          <div class="zone-title">Tashabbuskorlik va ishonchlilik</div>
-        </div>
-        <div class="zone-pct-badge">Maks: <span class="zmax5">450</span> $</div>
-      </div>
-      <div class="zone-body">
-        <div class="zone-col">
-          <h5>Nima qiladi</h5>
-          <p class="zone-what">Topshiriq kutmasdan muammolarni ko'radi va hal etadi. Maxfiylikni saqlaydi. CEO ga noqulayliklar bo'lmasdan ishlashga sharoit yaratadi.</p>
-          <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
-          <p class="zone-what"><b>Yagona subyektiv zona (10%).</b> CEO oyda bir bor 0–100 ball beradi. Boshqa 4 zona ob'ektiv — faqat bu yerda CEO fikri muhim.</p>
-        </div>
-        <div class="zone-col">
-          <h5>100% olish uchun mezonlar</h5>
-          <ul class="criteria-list">
-            <li>Kamida 2 ta o'z tashabbus bilan bajargani bo'ldi</li>
-            <li>Maxfiy ma'lumotlar saqlanish faktlari mavjud</li>
-            <li>CEO bilan muloqot qulay va qovushqoq bo'ldi</li>
-            <li>Noqulaylik yoki qo'shimcha stress yaratmadi</li>
-          </ul>
-          <ul class="criteria-list" style="margin-top:10px">
-            <li class="warn">CEO ning "80–99%" bahosi yetarli</li>
-            <li class="warn">50% dan past — ish uslubida yirik muammo bor</li>
-          </ul>
-        </div>
-      </div>
-      <div class="zone-footer"><b>Nima uchun faqat 10%?</b> — Subyektiv baholash kichik bo'lishi kerak. Asosiy pul — ob'ektiv ish uchun.</div>
-    </div>
-
-    <div class="limits-grid" style="margin-top:24px">
-      <div class="limit-card">
-        <h4><span class="dot dot-green"></span> Xodim nima QILADI</h4>
-        <ul class="clean">
-          <li>Topshiriqlar reyestrini yuritadi va nazorat qiladi</li>
-          <li>Materiallar, taqdimotlar, matnlar tayyorlaydi</li>
-          <li>Yig'ilish brifi va bayonnomalarini boshqaradi</li>
-          <li>CEO ga kunlik/haftalik status xabar beradi</li>
-          <li>Kontent-reja bo'yicha ijtimoiy tarmoq ishini olib boradi</li>
-        </ul>
-      </div>
-      <div class="limit-card">
-        <h4><span class="dot dot-red"></span> Xodim nima QILMAYDI (chegara)</h4>
-        <ul class="clean no">
-          <li>Xodimlarga buyruq bermaydi — bu COO zonasi</li>
-          <li>Operatsion ijroni qistamaydi yoki boshqarmaydi</li>
-          <li>Yig'ilishdan chiqqan operatsion vazifalarni ijro etmaydi</li>
-          <li>Moliyaviy qaror yoki imzolash vakolati yo'q</li>
-        </ul>
-      </div>
-    </div>
   </div>
 </section>
+
 
 <section id="calc">
   <div class="wrap">
@@ -772,6 +969,15 @@ ZONES.forEach((z, i) => {
   });
 });
 
+function showVariant(n, btn) {
+  [1,2,3].forEach(i => {
+    const p = document.getElementById('vp'+i);
+    if(p) p.style.display = i===n ? '' : 'none';
+  });
+  document.querySelectorAll('.vtab').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+}
+
 bInput.addEventListener('input', render);
 baseInput.addEventListener('input', render);
 
@@ -791,6 +997,12 @@ function render(){
   document.getElementById('sumBase').textContent    = fmt(BASE) + ' $';
   document.getElementById('sumB').textContent       = fmt(B) + ' $';
   document.getElementById('sumTotal').textContent   = fmt(TOTAL) + ' $';
+
+  /* Variant max narxlari */
+  const v1m = document.getElementById('v1max'); if(v1m) v1m.textContent = fmt(TOTAL);
+  const v2m = document.getElementById('v2max'); if(v2m) v2m.textContent = fmt(TOTAL);
+  const v3m = document.getElementById('v3max'); if(v3m) v3m.textContent = fmt(TOTAL);
+  const v3b = document.getElementById('v3bonus'); if(v3b) v3b.textContent = fmt(B);
 
   const shares = ZONES.map((_, i) => ({
     s1: g(si[i].s1), s2: g(si[i].s2), s3: g(si[i].s3)
@@ -842,7 +1054,7 @@ function render(){
     const tr=document.createElement('tr');
     tr.innerHTML=`
       <th>${i+1}. ${z.n}<br>
-        <span style="font-size:.72rem;font-weight:400;color:#6a8a80;font-family:'Hanken Grotesk',sans-serif">
+        <span style="font-size:.72rem;font-weight:400;color:#777777;font-family:'Hanken Grotesk',sans-serif">
           maks ${maxes[i].m1}$ / ${maxes[i].m2}$ / ${maxes[i].m3}$
         </span>
       </th>
