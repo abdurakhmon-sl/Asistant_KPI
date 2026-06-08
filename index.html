@@ -3,504 +3,884 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bosh direktor yordamchisi — KPI va lavozim kartasi</title>
+<title>Bosh direktor yordamchisi — KPI tizimi · Smartlife</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --paper:#FBF8F1; --ink:#16201C; --muted:#5A6661; --line:#E2DCCD;
-    --acc:#0E6B53; --acc-soft:#E5EFE9; --gold:#B5803A; --gold-soft:#F4EAD8;
-    --card:#FFFFFF; --shadow:0 1px 2px rgba(22,32,28,.04),0 8px 24px rgba(22,32,28,.06);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--paper); color:var(--ink);
-    font-family:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,sans-serif;
-    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
-    background-image:radial-gradient(circle at 12% -5%,rgba(14,107,83,.05),transparent 38%),radial-gradient(circle at 95% 8%,rgba(181,128,58,.05),transparent 34%);
-  }
-  .wrap{max-width:920px;margin:0 auto;padding:0 22px}
-  .serif{font-family:"Fraunces",Georgia,serif}
-  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
-  a{color:var(--acc)}
-  .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
-
-  /* hero */
-  header.hero{padding:64px 0 40px;border-bottom:1px solid var(--line)}
-  .hero h1{font-size:clamp(2.3rem,7vw,3.7rem);margin:.45em 0 .12em}
-  .hero .lede{font-size:clamp(1.05rem,2.4vw,1.32rem);color:var(--muted);font-family:"Fraunces",serif;font-style:italic;font-weight:400}
-  .meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:26px;font-size:.86rem;color:var(--muted)}
-  .meta b{color:var(--ink);font-weight:600}
-  .badge{display:inline-flex;align-items:center;gap:8px;margin-top:24px;background:var(--acc);color:#fff;padding:9px 16px;border-radius:999px;font-weight:600;font-size:.9rem;box-shadow:var(--shadow)}
-  .badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#9be8c9}
-
-  section{padding:46px 0;border-bottom:1px solid var(--line)}
-  .kicker{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-  h2{font-size:clamp(1.5rem,4vw,2.1rem);margin-bottom:8px}
-  .sec-lede{color:var(--muted);max-width:62ch;margin-bottom:26px}
-
-  /* principle */
-  .twin{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .pill{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
-  .pill.good{border-color:#bfe0d2}
-  .pill.bad{border-color:#ecd2c8}
-  .pill .tag{font-weight:700;font-size:.82rem;letter-spacing:.04em;display:inline-block;margin-bottom:8px}
-  .pill.good .tag{color:var(--acc)} .pill.bad .tag{color:#b4543a}
-  .pill p{font-size:.95rem;color:var(--muted)}
-
-  /* comparison */
-  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
-  table{width:100%;border-collapse:collapse;min-width:620px;background:var(--card)}
-  th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);font-size:.92rem;vertical-align:top}
-  thead th{background:#16201C;color:#fff;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem}
-  thead th.rec{background:var(--acc)}
-  tbody th{font-weight:600;color:var(--ink);background:#FAF7EF}
-  td.rec{background:var(--acc-soft);font-weight:600}
-  tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
-
-  /* variant cards */
-  .vcards{display:grid;gap:16px}
-  .vcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);position:relative}
-  .vcard.rec{border:2px solid var(--acc)}
-  .vcard h3{font-size:1.25rem;margin-bottom:6px}
-  .vcard .num{font-family:"Fraunces",serif;font-size:.8rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
-  .vcard p{color:var(--muted);font-size:.95rem;margin-top:6px}
-  .rec-tag{position:absolute;top:-11px;right:18px;background:var(--acc);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:5px 12px;border-radius:999px;text-transform:uppercase}
-
-  /* role card */
-  .role > h3{font-size:1.15rem;margin:26px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--acc-soft);color:var(--ink)}
-  .meta-grid{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:.95rem}
-  .meta-grid dt{font-weight:600;color:var(--acc)}
-  .meta-grid dd{color:var(--muted)}
-  .zone{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow)}
-  .zone h4{font-family:"Hanken Grotesk",sans-serif;font-size:1.02rem;font-weight:700;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
-  .zone .pay{color:var(--acc);font-family:"Fraunces",serif;font-weight:700;white-space:nowrap}
-  .zone dl{margin-top:10px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.9rem}
-  .zone dt{font-weight:600;color:var(--ink);white-space:nowrap}
-  .zone dd{color:var(--muted)}
-  ul.clean{list-style:none;display:grid;gap:8px}
-  ul.clean li{padding-left:22px;position:relative;color:var(--muted);font-size:.95rem}
-  ul.clean li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--acc)}
-  ul.clean.no li::before{background:#c47a5e}
-  .pay-box{background:var(--acc-soft);border:1px solid #bfe0d2;border-radius:14px;padding:18px 20px;font-size:.95rem}
-  .pay-box b{color:var(--ink)}
-  .gate{border-left:3px solid var(--gold);padding:6px 0 6px 16px;margin:12px 0}
-  .gate .g{font-weight:700;color:var(--gold)}
-  .note{font-size:.85rem;color:var(--muted);font-style:italic;margin-top:12px}
-
-  /* calculator */
-  .calc{background:#16201C;color:#EDEAE0;border-radius:20px;padding:26px 24px;box-shadow:var(--shadow)}
-  .calc h3{color:#fff;font-size:1.3rem;margin-bottom:4px}
-  .calc .sub{color:#9fb0a8;font-size:.9rem;margin-bottom:20px}
-  .row{display:grid;grid-template-columns:1fr auto;gap:4px 14px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08)}
-  .row .lbl{font-size:.95rem;font-weight:500}
-  .row .max{font-size:.78rem;color:#8fa49b}
-  .row .earn{font-family:"Fraunces",serif;font-weight:700;color:#7fe3bd;font-size:1.05rem;text-align:right;min-width:64px}
-  .row input[type=range]{grid-column:1/-1;width:100%;-webkit-appearance:none;height:6px;border-radius:999px;background:rgba(255,255,255,.16);margin-top:6px}
-  .row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#7fe3bd;cursor:pointer;border:3px solid #16201C;box-shadow:0 0 0 1px #7fe3bd}
-  .row input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#7fe3bd;cursor:pointer;border:3px solid #16201C}
-  .pct{font-size:.82rem;color:#9fb0a8;text-align:right}
-  .totals{margin-top:22px;display:grid;gap:8px}
-  .totals .t{display:flex;justify-content:space-between;font-size:.98rem}
-  .totals .grand{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:#fff;padding-top:10px;border-top:1px solid rgba(255,255,255,.16);align-items:baseline}
-  .totals .grand b{color:#7fe3bd}
-
-  /* sign-off */
-  .sign{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px;box-shadow:var(--shadow)}
-  .opts{display:grid;gap:10px;margin:14px 0 22px}
-  .opt{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:500}
-  .opt input{accent-color:var(--acc);width:18px;height:18px}
-  .opt:has(input:checked){border-color:var(--acc);background:var(--acc-soft)}
-  .sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin-top:8px}
-  .field{border-bottom:1.5px solid var(--ink);padding-bottom:6px;min-height:42px;display:flex;align-items:flex-end}
-  .field .cap{font-size:.76rem;color:var(--muted);font-weight:600}
-  .field{flex-direction:column;align-items:flex-start;gap:18px}
-  .btn{margin-top:24px;background:var(--acc);color:#fff;border:none;border-radius:999px;padding:13px 26px;font-family:inherit;font-weight:600;font-size:.95rem;cursor:pointer;box-shadow:var(--shadow)}
-  .btn:hover{background:#0b5743}
-
-  footer{padding:36px 0 60px;color:var(--muted);font-size:.82rem;text-align:center}
-
-  /* reveal */
-  .rv{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
-  @keyframes rise{to{opacity:1;transform:none}}
-
-  @media(max-width:680px){
-    .twin{grid-template-columns:1fr}
-    .sign-grid{grid-template-columns:1fr}
-    .zone h4{flex-direction:column;gap:4px}
-    header.hero{padding:48px 0 32px}
-    .meta-grid{grid-template-columns:1fr}
-    .meta-grid dt{margin-top:6px}
-  }
-  @media print{
-    body{background:#fff}
-    .calc{background:#fff;color:#000;border:1px solid #ccc}
-    .calc h3,.totals .grand{color:#000}
-    .row input[type=range]{display:none}
-    .btn{display:none}
-    section{break-inside:avoid}
-  }
+:root{
+  --paper:#F9F6EF; --ink:#14201B; --muted:#566260; --line:#E0DACE;
+  --acc:#0C6649; --acc2:#0E7A57; --acc-soft:#E4EEE9; --acc-pale:#F0F7F3;
+  --gold:#A97430; --gold-soft:#F3E8D4;
+  --danger:#9B3A20; --danger-soft:#FAEAE4;
+  --card:#FFFFFF; --shadow:0 1px 3px rgba(14,32,24,.05),0 6px 20px rgba(14,32,24,.07);
+  --r:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.015em}
+.serif{font-family:"Fraunces",Georgia,serif}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--acc)}
+.kicker{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(1.55rem,4vw,2.15rem);margin-bottom:6px}
+.sec-lede{color:var(--muted);max-width:64ch;margin-bottom:28px;font-size:.97rem}
+nav.toc{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(14,32,24,.06)}
+nav.toc .wrap{display:flex;align-items:center;gap:4px;overflow-x:auto;height:52px;-ms-overflow-style:none;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{white-space:nowrap;font-size:.8rem;font-weight:600;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:999px;transition:background .15s,color .15s}
+nav.toc a:hover{background:var(--acc-soft);color:var(--acc)}
+.nav-brand{font-family:"Fraunces",serif;font-weight:700;font-size:.95rem;color:var(--ink);margin-right:8px;white-space:nowrap;padding-right:12px;border-right:1px solid var(--line)}
+header.hero{padding:64px 0 48px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(12,102,73,.04) 0%,transparent 60%)}
+.hero-inputs{display:flex;flex-wrap:wrap;gap:16px 28px;margin-top:28px;padding:20px 24px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);align-items:flex-end}
+.hi-field{display:flex;flex-direction:column;gap:5px}
+.hi-field label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hi-field input[type=number]{border:1.5px solid var(--line);border-radius:8px;padding:9px 13px;font-family:"Fraunces",Georgia,serif;font-size:1.2rem;font-weight:700;color:var(--acc);background:var(--paper);outline:none;width:140px}
+.hi-field input[type=number]:focus{border-color:var(--acc);background:#fff}
+.hi-field .hi-note{font-size:.76rem;color:var(--muted)}
+.hi-sep{width:1px;height:44px;background:var(--line);margin-bottom:2px}
+.hi-total-box{display:flex;flex-direction:column;gap:5px}
+.hi-total-box .hi-tlabel{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hi-total-val{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;color:var(--ink)}
+.hi-total-val b{color:var(--acc)}
+.hi-total-sub{font-size:.76rem;color:var(--muted)}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.sl-logo{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:8px 16px;border-radius:10px;font-family:"Fraunces",serif;font-weight:700;font-size:1.05rem}
+.sl-logo span{width:26px;height:26px;background:var(--acc2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700}
+.doc-label{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:5px 12px;border-radius:999px}
+.hero h1{font-size:clamp(2.4rem,7vw,3.8rem);margin:0 0 .1em}
+.hero .lede{font-size:clamp(1.05rem,2.5vw,1.3rem);color:var(--muted);font-family:"Fraunces",serif;font-style:italic;font-weight:400;max-width:52ch}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:28px;font-size:.85rem;color:var(--muted)}
+.hero-meta b{color:var(--ink);font-weight:600}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.hbadge{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;font-weight:600;font-size:.875rem}
+.hbadge.green{background:var(--acc);color:#fff}
+.hbadge.gold{background:var(--gold);color:#fff}
+.hbadge.outline{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.hbadge::before{content:"";width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5)}
+.hbadge.outline::before{background:var(--muted)}
+.summary-box{background:var(--ink);color:#E8E4DA;border-radius:var(--r);padding:32px;margin-bottom:0}
+.summary-box h3{color:#fff;font-size:1.35rem;margin-bottom:18px}
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden}
+.sum-item{background:rgba(255,255,255,.04);padding:18px 20px}
+.sum-item .label{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8ba89e;margin-bottom:6px}
+.sum-item .value{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:700;color:#fff}
+.sum-item .sub{font-size:.8rem;color:#8ba89e;margin-top:3px}
+.ceo-note{background:rgba(14,122,87,.2);border:1px solid rgba(14,122,87,.4);border-radius:10px;padding:16px 18px;margin-top:18px;font-size:.9rem;color:#9be8c9;font-style:italic}
+.ceo-note b{color:#7fe3bd;font-style:normal}
+.twin{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.pill.good{border-color:#bfe0d2;background:var(--acc-pale)}
+.pill.bad{border-color:#e8c9bc;background:#FDF5F2}
+.pill .tag{font-weight:700;font-size:.8rem;letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;margin-bottom:8px}
+.pill.good .tag{color:var(--acc)}
+.pill.bad .tag{color:var(--danger)}
+.pill p{font-size:.93rem;color:var(--muted)}
+.vcards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column;gap:10px}
+.vcard.rec{border:2px solid var(--acc);background:var(--acc-pale)}
+.vcard .vnum{font-family:"Fraunces",serif;font-size:.75rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
+.vcard h3{font-size:1.15rem;margin:0}
+.vcard p{color:var(--muted);font-size:.9rem;flex:1}
+.vcard .vprice{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;color:var(--ink)}
+.vcard .vprice span{font-size:.8rem;font-weight:400;color:var(--muted);font-family:"Hanken Grotesk",sans-serif}
+.rec-tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--acc);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.06em;padding:4px 14px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
+.vtag{display:inline-block;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:999px;margin-top:4px}
+.vtag.low-risk{background:var(--acc-soft);color:var(--acc)}
+.vtag.mid-risk{background:var(--gold-soft);color:var(--gold)}
+.vtag.fair{background:var(--acc-soft);color:var(--acc)}
+.vtag.high-mot{background:var(--gold-soft);color:var(--gold)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.scroll table{width:100%;border-collapse:collapse;min-width:580px;background:var(--card)}
+.scroll th,.scroll td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);font-size:.9rem;vertical-align:top}
+.scroll thead th{background:#14201B;color:#fff;font-family:"Fraunces",serif;font-weight:600}
+.scroll thead th.rec{background:var(--acc)}
+.scroll tbody th{font-weight:600;color:var(--ink);background:#FAF7EF;white-space:nowrap}
+.scroll td.rec{background:var(--acc-soft);font-weight:600;color:var(--acc)}
+.scroll tbody tr:last-child td,.scroll tbody tr:last-child th{border-bottom:none}
+.check{color:var(--acc);font-weight:700}
+.cross{color:var(--danger)}
+.zone-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
+.zone-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line);gap:12px;flex-wrap:wrap}
+.zone-title{font-family:"Hanken Grotesk",sans-serif;font-weight:700;font-size:1rem;color:var(--ink)}
+.zone-num{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.zone-pct-badge{background:var(--acc);color:#fff;font-family:"Fraunces",serif;font-weight:700;font-size:.9rem;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.zone-body{padding:18px 22px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.zone-col h5{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.zone-what{font-size:.9rem;color:var(--muted);margin-bottom:8px}
+.criteria-list{list-style:none;display:grid;gap:7px}
+.criteria-list li{padding-left:22px;position:relative;font-size:.88rem;color:var(--ink)}
+.criteria-list li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--acc)}
+.criteria-list li.warn::before{background:var(--gold)}
+.zone-footer{padding:12px 22px;background:var(--acc-pale);border-top:1px solid var(--line);font-size:.83rem;color:var(--muted)}
+.zone-footer b{color:var(--acc)}
+.limits-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.limit-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+.limit-card h4{font-size:1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.limit-card h4 .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--acc)}
+.dot-red{background:var(--danger)}
+ul.clean{list-style:none;display:grid;gap:7px}
+ul.clean li{padding-left:22px;position:relative;color:var(--muted);font-size:.9rem}
+ul.clean li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--acc)}
+ul.clean.no li::before{background:var(--danger)}
+.gates-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gate-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.gate-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.gate-card .gnum{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.gate-card h4{font-size:1rem;margin-bottom:10px}
+.gate-card p{font-size:.86rem;color:var(--muted)}
+.gate-card .garrow{font-family:"Fraunces",serif;font-size:1.5rem;color:var(--line);position:absolute;bottom:16px;right:18px}
+.calc-wrap{background:var(--ink);color:#E8E4DA;border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.calc-header{padding:28px 28px 22px;border-bottom:1px solid rgba(255,255,255,.1)}
+.calc-header h3{color:#fff;font-size:1.4rem;margin-bottom:4px}
+.calc-header p{color:#8ba89e;font-size:.9rem}
+.calc-settings{padding:22px 28px;border-bottom:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.calc-field label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8ba89e;display:block;margin-bottom:8px}
+.calc-field input[type=number]{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;color:#fff;font-family:"Fraunces",serif;font-size:1.2rem;font-weight:700;outline:none}
+.calc-field input[type=number]:focus{border-color:rgba(127,227,189,.5);background:rgba(255,255,255,.1)}
+.calc-note{font-size:.78rem;color:#6a8a80;margin-top:6px}
+.calc-zones-section{padding:0 28px}
+.calc-zones-title{padding:20px 0 14px;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8ba89e;border-bottom:1px solid rgba(255,255,255,.08)}
+.czrow{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);display:grid;grid-template-columns:1fr;gap:8px}
+.czrow:last-child{border-bottom:none}
+.czrow-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.czlabel{font-size:.9rem;font-weight:600;color:#E8E4DA}
+.czperf{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:#7fe3bd}
+.czshares{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.czshares label{font-size:.7rem;color:#6a8a80;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.czshares input[type=number]{width:52px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:4px 6px;color:#7fe3bd;font-family:"Fraunces",serif;font-size:.9rem;font-weight:700;text-align:center;outline:none}
+.czshares input[type=number]:focus{border-color:rgba(127,227,189,.5)}
+.czshares .vsep{color:rgba(255,255,255,.2);font-size:.8rem}
+.share-warn{font-size:.7rem;color:#e8a87c;display:none}
+.czslider-row{display:flex;align-items:center;gap:10px}
+.czslider-row label{font-size:.7rem;color:#6a8a80;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.czslider-row input[type=range]{flex:1;-webkit-appearance:none;height:5px;border-radius:999px;background:rgba(255,255,255,.14);cursor:pointer}
+.czslider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#7fe3bd;cursor:pointer;border:3px solid #14201B;box-shadow:0 0 0 1px #7fe3bd}
+.czslider-row input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#7fe3bd;cursor:pointer;border:2px solid #14201B}
+.czslider-lbl{font-size:.78rem;color:#6a8a80;min-width:32px;text-align:right}
+.calc-table-wrap{padding:22px 28px 0;overflow-x:auto;border-top:1px solid rgba(255,255,255,.1)}
+.calc-table{width:100%;border-collapse:collapse;min-width:440px}
+.calc-table th,.calc-table td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.07);font-size:.88rem;text-align:center;vertical-align:middle}
+.calc-table thead th{background:rgba(255,255,255,.06);color:#8ba89e;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.12)}
+.calc-table thead th.ctitle{text-align:left;min-width:140px}
+.calc-table thead th.crec{background:rgba(12,102,73,.3);color:#7fe3bd}
+.calc-table tbody th{text-align:left;font-weight:600;color:#E8E4DA;background:transparent;font-size:.83rem}
+.calc-table tbody td{color:#b0c9c0}
+.calc-table tbody td.crec{color:#7fe3bd;font-weight:700;background:rgba(12,102,73,.15)}
+.calc-table tfoot th{text-align:left;font-family:"Fraunces",serif;font-size:.9rem;color:#8ba89e;font-weight:600;background:rgba(255,255,255,.03);padding-top:14px;border-top:2px solid rgba(255,255,255,.12)}
+.calc-table tfoot td{background:rgba(255,255,255,.03);padding-top:14px;color:#b0c9c0;font-weight:600;border-top:2px solid rgba(255,255,255,.12)}
+.calc-table tfoot td.crec{background:rgba(12,102,73,.18);color:#7fe3bd;font-weight:700}
+.calc-grand{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border-top:1px solid rgba(255,255,255,.1)}
+.cgrand-item{background:var(--ink);padding:22px;text-align:center}
+.cgrand-item.rec{background:rgba(12,102,73,.18)}
+.cgrand-item .cg-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8ba89e;margin-bottom:8px}
+.cgrand-item .cg-val{font-family:"Fraunces",serif;font-size:1.9rem;font-weight:700;color:#fff}
+.cgrand-item.rec .cg-val{color:#7fe3bd}
+.cgrand-item .cg-sub{font-size:.78rem;color:#6a8a80;margin-top:4px}
+.pay-box{background:var(--acc-pale);border:1px solid #bfe0d2;border-radius:var(--r);padding:20px 22px;font-size:.93rem}
+.pay-box p+p{margin-top:10px}
+.pay-box b{color:var(--ink)}
+.sign{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;box-shadow:var(--shadow)}
+.sign h3{font-size:1.2rem;margin-bottom:18px}
+.opts{display:grid;gap:10px;margin:0 0 24px}
+.opt{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);border-radius:12px;padding:14px 18px;cursor:pointer;font-weight:500;transition:all .15s}
+.opt input{accent-color:var(--acc);width:18px;height:18px;flex-shrink:0;margin-top:2px}
+.opt:has(input:checked){border-color:var(--acc);background:var(--acc-pale)}
+.opt-desc{font-size:.82rem;color:var(--muted);margin-top:2px}
+.sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;margin-top:4px}
+.field{border-bottom:1.5px solid var(--ink);padding-bottom:6px;min-height:44px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.field .cap{font-size:.74rem;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.divider{height:1px;background:var(--line);margin:24px 0}
+.btn{margin-top:26px;background:var(--acc);color:#fff;border:none;border-radius:999px;padding:14px 28px;font-family:inherit;font-weight:600;font-size:.95rem;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:8px}
+.btn:hover{background:#0b5743}
+footer{padding:40px 0 64px;color:var(--muted);font-size:.8rem}
+footer .fwrap{max-width:960px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:"Fraunces",serif;font-weight:700;color:var(--ink)}
+.rv{opacity:0;transform:translateY(12px);animation:rise .65s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.note{font-size:.83rem;color:var(--muted);font-style:italic;margin-top:14px}
+.divider{height:1px;background:var(--line);margin:24px 0}
+@media(max-width:700px){
+  .twin,.limits-grid,.vcards,.gates-row{grid-template-columns:1fr}
+  .sign-grid{grid-template-columns:1fr}
+  .zone-body{grid-template-columns:1fr}
+  .calc-settings{grid-template-columns:1fr}
+  .calc-grand{grid-template-columns:1fr}
+  header.hero{padding:52px 0 40px}
+  .hero-top{flex-direction:column}
+}
+@media print{
+  nav.toc{display:none}
+  .calc-wrap{background:#fff;color:#000;border:1px solid #ccc}
+  .calc-header h3{color:#000}
+  .czslider-row,.btn{display:none}
+  section{break-inside:avoid;page-break-inside:avoid}
+}
 </style>
 </head>
 <body>
 
+<nav class="toc">
+  <div class="wrap">
+    <span class="nav-brand">Smartlife</span>
+    <a href="#summary">Xulosa</a>
+    <a href="#why">Nima uchun?</a>
+    <a href="#variants">3 variant</a>
+    <a href="#zones">Zona mezonlari</a>
+    <a href="#calc">Kalkulyator</a>
+    <a href="#growth">O'sish</a>
+    <a href="#sign">Imzo</a>
+  </div>
+</nav>
+
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow rv">Smartlife · Ichki hujjat</div>
-    <h1 class="rv" style="animation-delay:.05s">Bosh direktor yordamchisi</h1>
-    <div class="lede rv" style="animation-delay:.12s">KPI tizimi va lavozim kartasi — kelishish uchun</div>
-    <div class="meta rv" style="animation-delay:.2s">
-      <span><b>Tayyorladi:</b> Moliyaviy direktor</span>
-      <span><b>Belgilangan maosh:</b> 500 $</span>
-      <span><b>Oʻzgaruvchan qism (B):</b> 4500 $ gacha</span>
-      <span><b>Jami:</b> 5000 $ gacha</span>
-      <span><b>Maqsad:</b> tasdiqlash</span>
+    <div class="hero-top rv">
+      <div class="sl-logo"><span>SL</span>Smartlife</div>
+      <span class="doc-label">Ichki hujjat · Kelishish uchun</span>
     </div>
-    <div class="badge rv" style="animation-delay:.28s">Tavsiya: 3-variant — Gibrid</div>
+    <h1 class="rv" style="animation-delay:.06s">Bosh direktor<br>yordamchisi</h1>
+    <div class="lede rv" style="animation-delay:.12s">KPI tizimi va lavozim kartasi — tasdiqlash uchun</div>
+    <div class="hero-meta rv" style="animation-delay:.18s">
+      <span><b>Tayyorladi:</b> Moliyaviy direktor</span>
+      <span><b>Belgilangan maosh:</b> <span id="metaBase">500</span> $</span>
+      <span><b>Maksimal bonus:</b> <span id="metaB">4 500</span> $ gacha</span>
+      <span><b>Jami imkoniyat:</b> <span id="metaTotal">5 000</span> $ gacha</span>
+    </div>
+    <div class="hero-badges rv" style="animation-delay:.24s">
+      <span class="hbadge green">Tavsiya: 3-variant — Gibrid</span>
+      <span class="hbadge gold">5 zona · bajarilgan ish uchun</span>
+      <span class="hbadge outline">Foiz yo'q — faqat aniq ish</span>
+    </div>
+
+    <div class="hero-inputs rv" style="animation-delay:.30s">
+      <div class="hi-field">
+        <label for="bInput">B — maksimal bonus</label>
+        <input type="number" id="bInput" value="4500" min="0" step="100">
+        <span class="hi-note">$ / oy · o'zgartiring, hamma joyga ta'sir qiladi</span>
+      </div>
+      <div class="hi-sep"></div>
+      <div class="hi-field">
+        <label for="baseInput">Belgilangan maosh</label>
+        <input type="number" id="baseInput" value="500" min="0" step="50">
+        <span class="hi-note">$ / oy · har doim to'lanadi</span>
+      </div>
+      <div class="hi-sep"></div>
+      <div class="hi-total-box">
+        <span class="hi-tlabel">Jami imkoniyat</span>
+        <span class="hi-total-val"><b id="heroTotal">5 000</b> $</span>
+        <span class="hi-total-sub">maosh + to'liq bonus</span>
+      </div>
+    </div>
   </div>
 </header>
 
-<section>
+<section id="summary">
   <div class="wrap">
-    <div class="kicker">Asosiy tamoyil</div>
-    <h2 class="serif">KPI bajarilgan ish uchun, natijadan emas</h2>
-    <p class="sec-lede">Yordamchi faqat koʻmaklashadi — sotuv va lidlar uning shaxsiy natijasi emas, shuning uchun maoshni ularga bogʻlab boʻlmaydi. Pul faqat uning oʻz mehnati uchun toʻlanadi. Biznes natijasi esa faqat lavozimni oshirish geytlarida hisobga olinadi — oylik mukofotda emas.</p>
-    <div class="twin">
-      <div class="pill good">
-        <span class="tag">Toʻgʻri — bajarilgan ish uchun</span>
-        <p>Topshiriqlar yopildi, bayonnomalar yozildi, reyestr dolzarb, kontent chiqdi. Oʻlchov — uning oʻz mehnati. Mana shu uchun toʻlaymiz.</p>
+    <div class="kicker rv">CEO uchun qisqa xulosa</div>
+    <h2 class="serif rv" style="animation-delay:.04s">Bir qarashda: nima, nima uchun, qancha</h2>
+    <p class="sec-lede rv" style="animation-delay:.08s">Ushbu sahifani o'qib 3 ta savolga javob topasiz: bu xodim nima qiladi, nega bu tizim foydali, va oyiga qancha to'lanadi.</p>
+    <div class="summary-box rv" style="animation-delay:.12s">
+      <h3>Bosh direktor yordamchisi — asosiy raqamlar</h3>
+      <div class="sum-grid">
+        <div class="sum-item">
+          <div class="label">Belgilangan maosh</div>
+          <div class="value" id="sumBase">500 $</div>
+          <div class="sub">har oy, ish bo'lmasa ham</div>
+        </div>
+        <div class="sum-item">
+          <div class="label">Maksimal bonus (B)</div>
+          <div class="value" id="sumB">4 500 $</div>
+          <div class="sub">bajarilgan ish uchun</div>
+        </div>
+        <div class="sum-item">
+          <div class="label">Jami (100% bajarganda)</div>
+          <div class="value" id="sumTotal">5 000 $</div>
+          <div class="sub">oyiga qo'lga</div>
+        </div>
+        <div class="sum-item">
+          <div class="label">Zona soni</div>
+          <div class="value">5 ta</div>
+          <div class="sub">har biri aniq o'lchovli</div>
+        </div>
       </div>
-      <div class="pill bad">
-        <span class="tag">Notoʻgʻri — nimadandir foiz</span>
-        <p>Mukofot sotuvga, lidlarga, tarmoq daromadiga bogʻlansa — bu uning natijasi emas. Bunday KPI maʼnosini yoʻqotadi va adolatsiz boʻladi.</p>
+      <div class="ceo-note">
+        <b>Asosiy g'oya:</b> Xodim qancha ko'p va sifatli ish bajarse — shuncha ko'p oladi. Sotuv raqamlariga, foyda foiziga bog'liq emas — faqat o'z ishiga. Bu adolatli va nazorat qilish oson.
+      </div>
+    </div>
+    <div class="twin" style="margin-top:20px">
+      <div class="pill good rv" style="animation-delay:.16s">
+        <span class="tag">&#10003; Bu tizimning foydasi CEO uchun</span>
+        <p>Xodim nima qilganini aniq ko'rasiz. Har oy natijani tekshirishga 10 daqiqa sarflaysiz. Bahslashuvlar bo'lmaydi — raqamlar hammaga ochiq.</p>
+      </div>
+      <div class="pill bad rv" style="animation-delay:.2s">
+        <span class="tag">&#10007; Foiz tizimi nima uchun ishlamaydi</span>
+        <p>Yordamchi sotuv ko'payishiga to'g'ridan-to'g'ri ta'sir qila olmaydi. Foiz bersangiz — u omadga ishonadi, mehnatga emas. Bu adolatsiz.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<section id="why">
   <div class="wrap">
-    <div class="kicker">Taqqoslash</div>
-    <h2 class="serif">Uch variant</h2>
-    <p class="sec-lede">Uchta tizim koʻrib chiqildi. Tavsiya — 3-variant: pul har doim adolatli (oʻz ishi uchun), oʻsish esa real biznes natijalari orqali.</p>
+    <div class="kicker">Mantiq va asoslash</div>
+    <h2 class="serif">Nima uchun aynan shunday?</h2>
+    <p class="sec-lede">CEO sifatida siz so'rashingiz mumkin: "Nima uchun bu raqamlar?" — bu yerda har biriga javob.</p>
     <div class="scroll">
       <table>
-        <thead>
-          <tr>
-            <th>Mezon</th>
-            <th>1-variant<br>Sof yordamchi + PR</th>
-            <th>2-variant<br>Rotatsiya</th>
-            <th class="rec">3-variant<br>Gibrid (tavsiya)</th>
-          </tr>
-        </thead>
+        <thead><tr><th>CEO savoli</th><th>Javob</th></tr></thead>
         <tbody>
-          <tr><th>Pul nima uchun toʻlanadi</th><td>faqat oʻz ishi uchun</td><td>jamoa natijasi + intizomi</td><td class="rec">oʻz ishi uchun (1-variant kabi)</td></tr>
-          <tr><th>Nima uchun koʻtariladi</th><td>yordamchi greydlari</td><td>oʻsha biznes-geytlar (= pul)</td><td class="rec">biznes-geytlar (= koʻtarilish, pul emas)</td></tr>
-          <tr><th>Bosh direktor ishtiroki</th><td>minimal (~10%)</td><td>minimal</td><td class="rec">minimal</td></tr>
-          <tr><th>Pul adolatliligi</th><td>yuqori</td><td>oʻrtacha (tarmoqqa bogʻliq)</td><td class="rec">yuqori</td></tr>
-          <tr><th>Oʻsish motivatsiyasi</th><td>oʻrtacha</td><td>yuqori</td><td class="rec">yuqori</td></tr>
-          <tr><th>Xodim uchun risk</th><td>past</td><td>oʻrtacha</td><td class="rec">past</td></tr>
+          <tr><td><b>Nima uchun 500$ belgilangan maosh?</b></td><td>Xodim har doim tayyor bo'lishi kerak — topshiriq bo'lmasa ham. Bu "doimiy tayyorlik" uchun to'lov.</td></tr>
+          <tr><td><b>Nima uchun 4500$ maksimal bonus?</b></td><td>5 ta zona bo'yicha 100% bajarganda yig'iladi. Bu xodim bilan raqobatbardosh bo'lishi uchun bozor darajasi.</td></tr>
+          <tr><td><b>Nima uchun foiz emas?</b></td><td>Yordamchi sotuvga bevosita ta'sir qilmaydi. Foiz bersangiz — u o'z aybisiz kam olishi mumkin. Bu adolatsiz va motivatsiyani yo'qotadi.</td></tr>
+          <tr><td><b>Kim nazorat qiladi?</b></td><td>Vazifa-treker (Telegram/Notion), kontent-kalendar va bayonnomalar. Siz faqat reyestrni ko'rasiz — qo'shimcha vaqt kerak emas.</td></tr>
+          <tr><td><b>Agar u yaxshi ishlamasa-chi?</b></td><td>Bonus kamayadi yoki nolga tushadi. Belgilangan 500$ minimal kafolat — xavf-xatarsiz sinab ko'rish imkoni bor.</td></tr>
+          <tr><td><b>Bu xodim o'sib ketmaydimi?</b></td><td>O'sish geytlari bor (quyida). Biznes natijalari bo'yicha — lavozim va maosh oshadi. Bu uning motivatsiyasi.</td></tr>
         </tbody>
       </table>
     </div>
+  </div>
+</section>
 
-    <div class="vcards" style="margin-top:22px">
+<section id="variants">
+  <div class="wrap">
+    <div class="kicker">Tanlov</div>
+    <h2 class="serif">3 variant — farqi nimada?</h2>
+    <p class="sec-lede">Uchta tizim ko'rib chiqildi. Har biri bir xil xodim uchun, lekin pul va o'sish mantigi boshqacha. Iltimos, diqqat bilan o'qing.</p>
+    <div class="vcards">
       <div class="vcard">
-        <span class="num">1-variant</span>
+        <div class="vnum">1-variant</div>
         <h3>Sof yordamchi + PR</h3>
-        <p>Pul faqat yordamchining shaxsiy ishi uchun. Jamoa natijalari hisobga olinmaydi. Oʻsish — yordamchi greydlari. Eng adolatli va past riskli, lekin shifti pastroq.</p>
+        <p>Pul faqat yordamchining o'z ishi uchun. Jamoa natijalari hisobga olinmaydi. O'sish — yordamchi greydi. Eng adolatli, lekin motivatsiya o'rtacha.</p>
+        <div class="vprice">500–5000 $ <span>/ oy</span></div>
+        <span class="vtag low-risk">Past risk</span>
+        <span class="vtag fair" style="margin-left:4px">Adolatli pul</span>
       </div>
       <div class="vcard">
-        <span class="num">2-variant</span>
+        <div class="vnum">2-variant</div>
         <h3>Rotatsiya-yordamchi</h3>
-        <p>Mukofot jamoa natijasiga (50%) va uning intizomiga (40%) bogʻlanadi. Marketing → sotuv → rivojlanish bosqichlari. Kamchilik: tarmoq yomon oy koʻrsa, u oʻz aybisiz kam oladi.</p>
+        <p>Mukofot jamoa natijasiga (50%) va uning intizomiga (40%) bog'lanadi. Kamchilik: tarmoq yomon oy ko'rsa, u o'z aybisiz kam oladi.</p>
+        <div class="vprice">300–5000 $ <span>/ oy</span></div>
+        <span class="vtag mid-risk">O'rtacha risk</span>
+        <span class="vtag high-mot" style="margin-left:4px">Yuqori motivatsiya</span>
       </div>
       <div class="vcard rec">
-        <span class="rec-tag">Tavsiya</span>
-        <span class="num">3-variant</span>
+        <span class="rec-tag">&#10022; Tavsiya</span>
+        <div class="vnum">3-variant</div>
         <h3>Gibrid</h3>
-        <p>Ikki mustaqil kontur: <b>pul</b> — bajarilgan ish uchun (zonalarga bogʻlangan), <b>oʻsish</b> — biznes-geytlar lavozimni oshiradi, oylik mukofotni emas. «Adolatli pul + real oʻsish» boʻyicha eng yaxshi yechim.</p>
+        <p>Ikki mustaqil kontur: <b>pul</b> — bajarilgan ish uchun (1-variant kabi); <b>o'sish</b> — biznes-geytlar lavozimni oshiradi, oylik mukofotni emas. Eng yaxshi yechim.</p>
+        <div class="vprice">500–5000 $ <span>/ oy</span></div>
+        <span class="vtag low-risk">Past risk</span>
+        <span class="vtag high-mot" style="margin-left:4px">Yuqori motivatsiya</span>
       </div>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap role">
-    <div class="kicker">3-variant boʻyicha</div>
-    <h2 class="serif">Lavozim kartasi</h2>
-    <p class="sec-lede">Yordamchi nima qiladi, nimaga javobgar va nima uchun qancha oladi — quyida toʻliq.</p>
-
-    <h3>Lavozim maqsadi</h3>
-    <p style="color:var(--muted)">Bosh direktorning ishonchli oʻng qoʻli boʻlish: uning shaxsiy topshiriqlarini bajarish, kommunikatsiyani yuritish va qarorlar ijrosini kuzatib borish — funksiyalarni boshqarmasdan, balki kuchaytirib.</p>
-
-    <h3>Boʻysunish va chegaralar</h3>
-    <dl class="meta-grid">
-      <dt>Boʻysunadi</dt><dd>Bosh direktorga (CEO)</dd>
-      <dt>Chegara</dt><dd>Operatsion ijro — Operatsion direktor (COO) zonasi. Yordamchi unga kirmaydi.</dd>
-      <dt>Roli</dt><dd>Qayd etadi va maʼlum qiladi — buyruq bermaydi va ijroni qistamaydi.</dd>
-    </dl>
-
-    <h3>Masʼuliyat sohalari va toʻlov</h3>
-
-    <div class="zone">
-      <h4>1. Bosh direktorning shaxsiy topshiriqlari <span class="pay">1575 $</span></h4>
-      <dl>
-        <dt>Nima qiladi</dt><dd>CEO topshiriqlarini oʻz vaqtida, eslatmasdan bajaradi.</dd>
-        <dt>«Bajarildi»</dt><dd>topshiriq muddatigacha yopilgan.</dd>
-        <dt>Qanday qayd etiladi</dt><dd>vazifa-treker (yoki Telegram-bot).</dd>
-      </dl>
-    </div>
-
-    <div class="zone">
-      <h4>2. PR / kommunikatsiya <span class="pay">1125 $</span></h4>
-      <dl>
-        <dt>Nima qiladi</dt><dd>kontent-reja boʻyicha matn, post va taqdimotlar tayyorlaydi va chiqaradi.</dd>
-        <dt>«Bajarildi»</dt><dd>jadval boʻyicha chiqdi va nuqsonsiz — xato yoki brend-kitobga zid material hisobga olinmaydi.</dd>
-        <dt>Qanday qayd etiladi</dt><dd>kontent-kalendar + muharrir tekshiruvi (Bosh direktor emas).</dd>
-      </dl>
-    </div>
-
-    <div class="zone">
-      <h4>3. CEO topshiriqlari reyestri <span class="pay">675 $</span></h4>
-      <dl>
-        <dt>Nima qiladi</dt><dd>Bosh direktorning shaxsiy topshiriqlari yagona reyestrini yuritadi, statuslarni dolzarb saqlaydi.</dd>
-        <dt>«Bajarildi»</dt><dd>reyestr toʻliq (qamrov) va yangilangan (dolzarblik).</dd>
-        <dt>Chegara</dt><dd>ijroni qistamaydi — bu COO ishi; faqat qayd etadi va CEOga xabar beradi.</dd>
-      </dl>
-    </div>
-
-    <div class="zone">
-      <h4>4. Bosh direktor yigʻilishlari sikli <span class="pay">675 $</span></h4>
-      <dl>
-        <dt>Nima qiladi</dt><dd>yigʻilishdan oldin material tayyorlaydi, soʻng vazifalar bilan bayonnoma tarqatadi.</dd>
-        <dt>«Bajarildi»</dt><dd>brif oldindan tayyor + bayonnoma 24 soat ichida tarqatilgan.</dd>
-        <dt>Qanday qayd etiladi</dt><dd>kalendar + tarqatish fakti.</dd>
-      </dl>
-    </div>
-
-    <div class="zone">
-      <h4>5. Tashabbuskorlik / ishonchlilik <span class="pay">450 $</span></h4>
-      <dl>
-        <dt>Nima qiladi</dt><dd>tashabbus koʻrsatadi, maxfiylikni saqlaydi, ishonchli boʻladi.</dd>
-        <dt>Qanday qayd etiladi</dt><dd>Bosh direktorning yengil oylik bahosi — yagona subyektiv qism (10%).</dd>
-      </dl>
-    </div>
-
-    <h3>Vakolatlar</h3>
-    <ul class="clean">
-      <li>Reyestr yuritadi, materiallar tayyorlaydi, statusni CEO uchun maʼlumot sifatida soʻraydi.</li>
-      <li>Kontent-rejani amalga oshiradi: belgilangan doirada matn va materiallar tayyorlaydi.</li>
-    </ul>
-
-    <h3>Nima qilmaydi (chegaralar)</h3>
-    <ul class="clean no">
-      <li>Xodimlarga buyruq bermaydi va operatsion ijroni qistamaydi — bu Operatsion direktor zonasi.</li>
-      <li>Yigʻilishdan chiqqan operatsion vazifalarni faqat qayd etadi va uzatadi, ularning ijrosini boshqarmaydi.</li>
-    </ul>
-
-    <h3>Toʻlov</h3>
-    <div class="pay-box">
-      <p><b>Belgilangan maosh — 500 $.</b> Lavozim yopilgani va doimiy tayyorlik uchun.</p>
-      <p style="margin-top:10px"><b>Oʻzgaruvchan qism — 4500 $ gacha (B).</b> Zonalar boʻyicha bajarilgan ish uchun (yuqoridagi summalar). Bonus = zonalar boʻyicha topilgan summalar yigʻindisi. «Nimadandir foiz» yoʻq — beshta aniq ish boʻlagi, har biriga oʻz toʻlovi.</p>
-      <p style="margin-top:10px"><b>Jami — 500 dan 5000 $ gacha oyiga.</b></p>
-    </div>
-
-    <h3>Oʻsish — geytlar</h3>
-    <div class="gate"><span class="g">Geyt 1 →</span> Sotuv yordamchisi. Shart: 16 000 sifatli lid (5 filialdan 10 000 + Toshkentdan 6 000), call-markaz tasdiqlaydi, 2 oy ketma-ket <b>va</b> oylik baho ≥85%.</div>
-    <div class="gate"><span class="g">Geyt 2 →</span> Rivojlanish yordamchisi. Shart: tarmoq boʻyicha oʻrtacha ≥ 500 000 $ / filial oyiga, 2 oy <b>va</b> oylik baho ≥85%.</div>
-    <div class="gate"><span class="g">Geyt 3 →</span> keyingi lavozim. Shart: yangi filial / yoʻnalish boʻyicha biznes-keys himoya qilinib, tasdiqlangan.</div>
-    <p class="note">Ikki tomonlama shart (biznes natija <b>va</b> yuqori baho) «birovning yelkasida koʻtarilish»dan himoya qiladi. Geytlar lavozim va maoshni oshiradi — oylik mukofotni emas.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="kicker">Interaktiv</div>
-    <h2 class="serif">Bonus kalkulyatori</h2>
-    <p class="sec-lede">Umumiy B (oʻzgaruvchan qism) ni belgilang, har bir zona uchun bajarilish foizini sozlang — uch variant bir vaqtda hisoblanadi.</p>
-
-    <!-- B sozlash bloki -->
-    <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--shadow)">
-      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:16px">
-        <label style="font-weight:600;font-size:.95rem;min-width:220px">Umumiy B (oʻzgaruvchan qism maks):</label>
-        <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:240px">
-          <input type="number" id="bInput" value="4500" min="0" step="100"
-            style="width:120px;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:1rem;font-weight:600;color:var(--acc)">
-          <span style="font-size:.9rem;color:var(--muted)">$ / oy</span>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:16px">
-        <label style="font-weight:600;font-size:.95rem;min-width:220px">Belgilangan maosh:</label>
-        <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:240px">
-          <input type="number" id="baseInput" value="500" min="0" step="50"
-            style="width:120px;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:1rem;font-weight:600;color:var(--gold)">
-          <span style="font-size:.9rem;color:var(--muted)">$ / oy</span>
-        </div>
-      </div>
-      <p style="margin-top:12px;font-size:.83rem;color:var(--muted);font-style:italic">B oʻzgarganda barcha variant va zona summalari avtomatik qayta hisoblanadi.</p>
-    </div>
-
-    <!-- 3 ustunli kalkulyator -->
-    <div style="overflow-x:auto">
-      <table id="calcTable" style="width:100%;border-collapse:collapse;min-width:640px;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)">
+    <div class="scroll" style="margin-top:24px">
+      <table>
         <thead>
           <tr>
-            <th style="background:#16201C;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:.92rem;padding:14px 16px;text-align:left;min-width:180px">Zona</th>
-            <th style="background:#3a4a44;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:.92rem;padding:14px 16px;text-align:center">1-variant<br><span style="font-weight:400;font-size:.8rem;opacity:.8">Sof yordamchi + PR</span></th>
-            <th style="background:#3a4a44;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:.92rem;padding:14px 16px;text-align:center">2-variant<br><span style="font-weight:400;font-size:.8rem;opacity:.8">Rotatsiya</span></th>
-            <th style="background:var(--acc);color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:.92rem;padding:14px 16px;text-align:center">3-variant ✦<br><span style="font-weight:400;font-size:.8rem;opacity:.8">Gibrid (tavsiya)</span></th>
+            <th>Mezon</th><th>1-variant</th><th>2-variant</th><th class="rec">3-variant &#10022;</th>
           </tr>
         </thead>
-        <tbody id="calcBody"></tbody>
-        <tfoot id="calcFoot"></tfoot>
+        <tbody>
+          <tr><th>Pul nima uchun?</th><td>O'z ishi uchun</td><td>Jamoa natijasi + intizom</td><td class="rec">O'z ishi uchun</td></tr>
+          <tr><th>Nima uchun ko'tariladi?</th><td>Yordamchi greydi</td><td>Biznes-geytlar (pul oshadi)</td><td class="rec">Biznes-geytlar (lavozim oshadi)</td></tr>
+          <tr><th>Adolatli to'lovmi?</th><td class="check">&#10003; Ha</td><td>O'rtacha</td><td class="rec check">&#10003; Ha</td></tr>
+          <tr><th>Motivatsiya kuchli?</th><td>O'rtacha</td><td class="check">&#10003; Ha</td><td class="rec check">&#10003; Ha</td></tr>
+          <tr><th>CEO uchun nazorat oson?</th><td class="check">&#10003; Ha</td><td class="cross">&#10007; Yo'q</td><td class="rec check">&#10003; Ha</td></tr>
+          <tr><th>Xodim uchun risk?</th><td>Past</td><td>O'rtacha</td><td class="rec">Past</td></tr>
+        </tbody>
       </table>
     </div>
-
-    <!-- Slider panel -->
-    <div class="calc" id="sliderPanel" style="margin-top:20px">
-      <h3>Bajarilish foizini sozlang</h3>
-      <div class="sub">Sliderlar uchta variantda bir xil qoʻllanadi</div>
-      <div id="sliderRows"></div>
+    <div class="pay-box" style="margin-top:20px">
+      <p><b>Nima uchun 3-variant?</b> — Pul va o'sish ajratilgan: xodim har oy bajarilgan ish uchun adolatli oladi, lekin katta natijalar ko'rsatsa — lavozimi oshadi. Bu ikkala kontur bir-biriga xalaqit bermaydi.</p>
     </div>
   </div>
 </section>
 
-<section>
+<section id="zones">
+  <div class="wrap">
+    <div class="kicker">Lavozim kartasi · 3-variant bo'yicha</div>
+    <h2 class="serif">5 zona — nima qiladi va 100% olish uchun nima kerak</h2>
+    <p class="sec-lede">Har bir zona uchun: xodim nima qiladi, "100% bajarildi" degani nima, va siz qanday tekshirasiz.</p>
+
+    <div class="zone-card">
+      <div class="zone-head">
+        <div>
+          <div class="zone-num">Zona 1 · 35% dan B</div>
+          <div class="zone-title">Bosh direktorning shaxsiy topshiriqlari</div>
+        </div>
+        <div class="zone-pct-badge">Maks: <span class="zmax1">1 575</span> $</div>
+      </div>
+      <div class="zone-body">
+        <div class="zone-col">
+          <h5>Nima qiladi</h5>
+          <p class="zone-what">CEO ning shaxsiy topshiriqlarini — hujjatlar tayyorlash, uchrashuvlar tashkil etish, ma'lumotlar yig'ish, xat-xabar yuborish — eslatmasdan va o'z vaqtida bajaradi.</p>
+          <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
+          <p class="zone-what">Vazifa-treker (Notion, Telegram-bot) yoki Excel reyestri. Har oy yakunida yopilgan/yopilmagan topshiriqlar hisoblanadi.</p>
+        </div>
+        <div class="zone-col">
+          <h5>100% olish uchun mezonlar</h5>
+          <ul class="criteria-list">
+            <li>Barcha topshiriqlar belgilangan muddatda yopilgan</li>
+            <li>Birorta ham topshiriq eslatmasiz qolmagan</li>
+            <li>Muddati yaqinlashganda CEO ga oldindan xabar berilgan</li>
+            <li>Muddati o'tgan topshiriq soni: 0</li>
+          </ul>
+          <ul class="criteria-list" style="margin-top:10px">
+            <li class="warn">80–99%: 1–2 kechikish bor, lekin xabar berilgan</li>
+            <li class="warn">50–79%: 3+ kechikish yoki xabarsiz qolganlar bor</li>
+          </ul>
+        </div>
+      </div>
+      <div class="zone-footer"><b>Nima uchun eng katta zona (35%)?</b> — Bu CEO ning eng muhim va eng ko'p vaqt oladigan ishi. Agar bu yaxshi ishlamasa — boshqa hamma narsa ma'nosiz.</div>
+    </div>
+
+    <div class="zone-card">
+      <div class="zone-head">
+        <div>
+          <div class="zone-num">Zona 2 · 25% dan B</div>
+          <div class="zone-title">PR va kommunikatsiya</div>
+        </div>
+        <div class="zone-pct-badge">Maks: <span class="zmax2">1 125</span> $</div>
+      </div>
+      <div class="zone-body">
+        <div class="zone-col">
+          <h5>Nima qiladi</h5>
+          <p class="zone-what">Kontent-reja bo'yicha matn, post va taqdimotlar tayyorlaydi, brend qoidalariga mos holda chiqaradi. CEO va kompaniya nomidan tashqi kommunikatsiya.</p>
+          <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
+          <p class="zone-what">Kontent-kalendar + muharrir tekshiruvi (CEO emas). CEO faqat umumiy natijani ko'radi.</p>
+        </div>
+        <div class="zone-col">
+          <h5>100% olish uchun mezonlar</h5>
+          <ul class="criteria-list">
+            <li>Barcha rejalashtirilgan postlar o'z vaqtida chiqdi</li>
+            <li>Hech qaysi post brend-kitobga zid emas</li>
+            <li>Xato yoki tuzatish talab etilgan material: 0</li>
+            <li>Kontent-kalendar oyning boshida tayyor</li>
+          </ul>
+          <ul class="criteria-list" style="margin-top:10px">
+            <li class="warn">80–99%: 1–2 kechikish yoki kichik tuzatish</li>
+            <li class="warn">50–79%: 3+ nosozlik yoki brend buzilishi bor</li>
+          </ul>
+        </div>
+      </div>
+      <div class="zone-footer"><b>Eslatma:</b> Kontent sifatini muharrir baholaydi — CEO emas. Bu CEO vaqtini tejaydi.</div>
+    </div>
+
+    <div class="zone-card">
+      <div class="zone-head">
+        <div>
+          <div class="zone-num">Zona 3 · 15% dan B</div>
+          <div class="zone-title">CEO topshiriqlari reyestri</div>
+        </div>
+        <div class="zone-pct-badge">Maks: <span class="zmax3">675</span> $</div>
+      </div>
+      <div class="zone-body">
+        <div class="zone-col">
+          <h5>Nima qiladi</h5>
+          <p class="zone-what">CEO ning barcha shaxsiy topshiriqlarini yagona reyestrda yuritadi. Statuslarni dolzarb saqlaydi, CEO ga haftalik hisobot beradi.</p>
+          <p class="zone-what" style="margin-top:8px"><b>Chegara:</b> Ijroni qistamaydi — bu COO ishi. Faqat qayd etadi va xabar beradi.</p>
+          <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
+          <p class="zone-what">CEO reyestrni istalgan vaqt ochib ko'rishi mumkin. Haftalik 5 daqiqa — hammasi ko'rinadi.</p>
+        </div>
+        <div class="zone-col">
+          <h5>100% olish uchun mezonlar</h5>
+          <ul class="criteria-list">
+            <li>Reyestr to'liq — birorta topshiriq yo'q emas</li>
+            <li>Har bir topshiriqning statusi yangilangan (so'nggi 24 soat)</li>
+            <li>Muddati yaqinlashgan topshiriqlar oldindan belgilangan</li>
+            <li>Haftalik hisobot jo'natilgan</li>
+          </ul>
+          <ul class="criteria-list" style="margin-top:10px">
+            <li class="warn">80–99%: reyestr bor, lekin 1–2 status yangilanmagan</li>
+            <li class="warn">50–79%: reyestr to'liq emas yoki hisobot yo'q</li>
+          </ul>
+        </div>
+      </div>
+      <div class="zone-footer"><b>CEO uchun foyda:</b> Siz hech narsani yodingizda tutmasdan — hamma topshiriqlar bir joyda ko'rinadi.</div>
+    </div>
+
+    <div class="zone-card">
+      <div class="zone-head">
+        <div>
+          <div class="zone-num">Zona 4 · 15% dan B</div>
+          <div class="zone-title">Bosh direktor yig'ilishlari sikli</div>
+        </div>
+        <div class="zone-pct-badge">Maks: <span class="zmax4">675</span> $</div>
+      </div>
+      <div class="zone-body">
+        <div class="zone-col">
+          <h5>Nima qiladi</h5>
+          <p class="zone-what">Har bir yig'ilishdan oldin: kun tartibi va materiallarni tayyorlaydi. Yig'ilishdan so'ng: qarorlar va vazifalar bilan bayonnoma tarqatadi.</p>
+          <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
+          <p class="zone-what">Kalendar + tarqatish fakti (email yoki Telegram). Oddiy va tekshirish oson.</p>
+        </div>
+        <div class="zone-col">
+          <h5>100% olish uchun mezonlar</h5>
+          <ul class="criteria-list">
+            <li>Har bir yig'ilish uchun kun tartibi oldindan tayyor (min. 2 soat oldin)</li>
+            <li>Bayonnoma yig'ilishdan so'ng 24 soat ichida tarqatilgan</li>
+            <li>Bayonnomada barcha qarorlar va mas'ul shaxslar ko'rsatilgan</li>
+            <li>Birorta ham o'tkazib yuborilmagan</li>
+          </ul>
+          <ul class="criteria-list" style="margin-top:10px">
+            <li class="warn">80–99%: 1 yig'ilish uchun kechikish bor</li>
+            <li class="warn">50–79%: 3+ yig'ilish uchun material tayyor bo'lmagan</li>
+          </ul>
+        </div>
+      </div>
+      <div class="zone-footer"><b>CEO uchun foyda:</b> Yig'ilishga tayyor kelsangiz — vaqtingiz tejaladi. Bayonnoma bo'lsa — kim nima qilishi aniq.</div>
+    </div>
+
+    <div class="zone-card">
+      <div class="zone-head">
+        <div>
+          <div class="zone-num">Zona 5 · 10% dan B</div>
+          <div class="zone-title">Tashabbuskorlik va ishonchlilik</div>
+        </div>
+        <div class="zone-pct-badge">Maks: <span class="zmax5">450</span> $</div>
+      </div>
+      <div class="zone-body">
+        <div class="zone-col">
+          <h5>Nima qiladi</h5>
+          <p class="zone-what">Topshiriq kutmasdan muammolarni ko'radi va hal etadi. Maxfiylikni saqlaydi. CEO ga noqulayliklar bo'lmasdan ishlashga sharoit yaratadi.</p>
+          <h5 style="margin-top:14px">Qanday nazorat qilinadi</h5>
+          <p class="zone-what"><b>Yagona subyektiv zona (10%).</b> CEO oyda bir bor 0–100 ball beradi. Boshqa 4 zona ob'ektiv — faqat bu yerda CEO fikri muhim.</p>
+        </div>
+        <div class="zone-col">
+          <h5>100% olish uchun mezonlar</h5>
+          <ul class="criteria-list">
+            <li>Kamida 2 ta o'z tashabbus bilan bajargani bo'ldi</li>
+            <li>Maxfiy ma'lumotlar saqlanish faktlari mavjud</li>
+            <li>CEO bilan muloqot qulay va qovushqoq bo'ldi</li>
+            <li>Noqulaylik yoki qo'shimcha stress yaratmadi</li>
+          </ul>
+          <ul class="criteria-list" style="margin-top:10px">
+            <li class="warn">CEO ning "80–99%" bahosi yetarli</li>
+            <li class="warn">50% dan past — ish uslubida yirik muammo bor</li>
+          </ul>
+        </div>
+      </div>
+      <div class="zone-footer"><b>Nima uchun faqat 10%?</b> — Subyektiv baholash kichik bo'lishi kerak. Asosiy pul — ob'ektiv ish uchun.</div>
+    </div>
+
+    <div class="limits-grid" style="margin-top:24px">
+      <div class="limit-card">
+        <h4><span class="dot dot-green"></span> Xodim nima QILADI</h4>
+        <ul class="clean">
+          <li>Topshiriqlar reyestrini yuritadi va nazorat qiladi</li>
+          <li>Materiallar, taqdimotlar, matnlar tayyorlaydi</li>
+          <li>Yig'ilish brifi va bayonnomalarini boshqaradi</li>
+          <li>CEO ga kunlik/haftalik status xabar beradi</li>
+          <li>Kontent-reja bo'yicha ijtimoiy tarmoq ishini olib boradi</li>
+        </ul>
+      </div>
+      <div class="limit-card">
+        <h4><span class="dot dot-red"></span> Xodim nima QILMAYDI (chegara)</h4>
+        <ul class="clean no">
+          <li>Xodimlarga buyruq bermaydi — bu COO zonasi</li>
+          <li>Operatsion ijroni qistamaydi yoki boshqarmaydi</li>
+          <li>Yig'ilishdan chiqqan operatsion vazifalarni ijro etmaydi</li>
+          <li>Moliyaviy qaror yoki imzolash vakolati yo'q</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="calc">
+  <div class="wrap">
+    <div class="kicker">Interaktiv</div>
+    <h2 class="serif">Bonus kalkulyatori — uchta variant bir vaqtda</h2>
+    <p class="sec-lede">B (umumiy bonus) va har bir zona ulushini o'zgartiring. Bajarilish foizini sozlang — uchala variant jonli hisoblanadi.</p>
+    <div class="calc-wrap">
+      <div class="calc-header">
+        <h3>Oylik to'lov simulyatori</h3>
+        <p>Tepada B va maoshni o'zgartiring — bu yerda zona ulushlarini va bajarilish foizini sozlang</p>
+      </div>
+      <div class="calc-zones-section">
+        <div class="calc-zones-title">Zona ulushlarini va bajarilish foizini sozlang</div>
+        <div id="calcZones"></div>
+      </div>
+      <div class="calc-table-wrap">
+        <table class="calc-table">
+          <thead>
+            <tr>
+              <th class="ctitle">Zona</th>
+              <th>1-variant</th>
+              <th>2-variant</th>
+              <th class="crec">3-variant &#10022;</th>
+            </tr>
+          </thead>
+          <tbody id="calcBody"></tbody>
+          <tfoot id="calcFoot"></tfoot>
+        </table>
+      </div>
+      <div class="calc-grand" id="calcGrand"></div>
+    </div>
+  </div>
+</section>
+
+<section id="growth">
+  <div class="wrap">
+    <div class="kicker">Karyera yo'li</div>
+    <h2 class="serif">O'sish — qaerga boradi bu xodim?</h2>
+    <p class="sec-lede">Xodim yaxshi ishlasa — qayerga o'sishi mumkin? Bu 3 ta bosqich. Har bir bosqichda ikkita shart — biznes natijasi VA yaxshi baho (ikkalasi bir vaqtda).</p>
+    <div class="gates-row">
+      <div class="gate-card">
+        <div class="gnum">Geyt 1</div>
+        <h4>Sotuv yordamchisi</h4>
+        <p>16 000 sifatli lid (5 filialdan 10 000 + Toshkentdan 6 000), call-markaz tasdiqlaydi.</p>
+        <p style="margin-top:8px">2 oy ketma-ket <b>va</b> oylik baho &#8805;85%</p>
+        <div class="garrow">&#8594;</div>
+      </div>
+      <div class="gate-card">
+        <div class="gnum">Geyt 2</div>
+        <h4>Rivojlanish yordamchisi</h4>
+        <p>Tarmoq bo'yicha o'rtacha &#8805; 500 000 $ / filial oyiga.</p>
+        <p style="margin-top:8px">2 oy <b>va</b> oylik baho &#8805;85%</p>
+        <div class="garrow">&#8594;</div>
+      </div>
+      <div class="gate-card">
+        <div class="gnum">Geyt 3</div>
+        <h4>Yangi lavozim</h4>
+        <p>Yangi filial yoki yo'nalish bo'yicha biznes-keys himoya qilinib, tasdiqlangan.</p>
+        <p style="margin-top:8px">CEO tasdig'i</p>
+        <div class="garrow">&#9733;</div>
+      </div>
+    </div>
+    <p class="note">Geytlar <b>lavozim va maosh</b>ni oshiradi — oylik mukofotni emas. Ikki tomonlama shart "birovning yelkasida ko'tarilish"dan himoya qiladi.</p>
+  </div>
+</section>
+
+<section id="sign">
   <div class="wrap">
     <div class="kicker">Kelishish</div>
     <h2 class="serif">Tasdiqlash va imzo</h2>
-    <p class="sec-lede">Tanlangan variantni belgilang va hujjatni imzolang.</p>
+    <p class="sec-lede">Tanlangan variantni belgilang. Imzo — bu tizim ishlaydi degan tasdiqlash.</p>
     <div class="sign">
+      <h3>Qaysi variantni tasdiqlaysiz?</h3>
       <div class="opts">
-        <label class="opt"><input type="radio" name="variant"> 1-variant — Sof yordamchi + PR</label>
-        <label class="opt"><input type="radio" name="variant"> 2-variant — Rotatsiya</label>
-        <label class="opt"><input type="radio" name="variant" checked> 3-variant — Gibrid (tavsiya)</label>
+        <label class="opt">
+          <input type="radio" name="variant">
+          <div>
+            <div>1-variant — Sof yordamchi + PR</div>
+            <div class="opt-desc">Faqat o'z ishi uchun pul. O'sish — yordamchi greydi.</div>
+          </div>
+        </label>
+        <label class="opt">
+          <input type="radio" name="variant">
+          <div>
+            <div>2-variant — Rotatsiya</div>
+            <div class="opt-desc">Jamoa natijasiga bog'liq. O'sish — biznes-geytlar (maosh oshadi).</div>
+          </div>
+        </label>
+        <label class="opt">
+          <input type="radio" name="variant" checked>
+          <div>
+            <div>3-variant — Gibrid <b style="color:var(--acc)">(tavsiya)</b></div>
+            <div class="opt-desc">O'z ishi uchun pul + biznes-geytlar lavozimni oshiradi. Eng muvozanatli yechim.</div>
+          </div>
+        </label>
       </div>
+      <div class="divider"></div>
       <div class="sign-grid">
-        <div class="field"><span class="cap">F.I.Sh.</span></div>
-        <div class="field"><span class="cap">Lavozim (Bosh direktor / direktor)</span></div>
+        <div class="field"><span class="cap">F.I.Sh. (imzolayotgan shaxs)</span></div>
+        <div class="field"><span class="cap">Lavozim</span></div>
         <div class="field"><span class="cap">Sana</span></div>
         <div class="field"><span class="cap">Imzo</span></div>
       </div>
-      <button class="btn" onclick="window.print()">Chop etish / PDF saqlash</button>
+      <button class="btn" onclick="window.print()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+        Chop etish / PDF saqlash
+      </button>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">Smartlife · Bosh direktor yordamchisi uchun KPI va lavozim kartasi · ichki hujjat</div>
+  <div class="fwrap">
+    <span class="footer-logo">Smartlife</span>
+    <span>Bosh direktor yordamchisi · KPI tizimi · Ichki hujjat</span>
+  </div>
 </footer>
 
 <script>
-  /* ---- Zona nisbatlari (foiz ulushlar, B ga nisbatan) ---- */
-  const zoneRatios = [
-    { n: "1. Shaxsiy topshiriqlar",  r1: 0.35, r2: 0.30, r3: 0.35 },
-    { n: "2. PR / kommunikatsiya",   r1: 0.25, r2: 0.20, r3: 0.25 },
-    { n: "3. Topshiriqlar reyestri", r1: 0.15, r2: 0.20, r3: 0.15 },
-    { n: "4. Yigʻilishlar sikli",    r1: 0.15, r2: 0.15, r3: 0.15 },
-    { n: "5. Tashabbuskorlik",       r1: 0.10, r2: 0.15, r3: 0.10 },
-  ];
+const ZONES = [
+  { n:"Shaxsiy topshiriqlar", p1:35, p2:30, p3:35 },
+  { n:"PR / kommunikatsiya",  p1:25, p2:20, p3:25 },
+  { n:"Topshiriqlar reyestri",p1:15, p2:20, p3:15 },
+  { n:"Yig'ilishlar sikli",   p1:15, p2:15, p3:15 },
+  { n:"Tashabbuskorlik",      p1:10, p2:15, p3:10 },
+];
 
-  /* ---- DOM elementlari ---- */
-  const bInput    = document.getElementById('bInput');
-  const baseInput = document.getElementById('baseInput');
-  const tbody     = document.getElementById('calcBody');
-  const tfoot     = document.getElementById('calcFoot');
-  const sliderRows = document.getElementById('sliderRows');
+const bInput    = document.getElementById('bInput');
+const baseInput = document.getElementById('baseInput');
+const calcZones = document.getElementById('calcZones');
+const calcBody  = document.getElementById('calcBody');
+const calcFoot  = document.getElementById('calcFoot');
+const calcGrand = document.getElementById('calcGrand');
 
-  /* ---- Sliderlarni bir marta qurish ---- */
-  zoneRatios.forEach((z, i) => {
-    const div = document.createElement('div');
-    div.className = 'row';
-    div.innerHTML = `
-      <span class="lbl">${z.n}</span>
-      <span class="earn" id="pct${i}">100%</span>
-      <input type="range" min="0" max="100" value="100" step="1" id="s${i}">
-      <span class="pct" id="plbl${i}" style="grid-column:1/-1">100% bajarildi</span>`;
-    sliderRows.appendChild(div);
-    document.getElementById('s' + i).addEventListener('input', render);
+const si = []; // share inputs per zone: [{s1,s2,s3}, ...]
+const pr = []; // perf range inputs
+
+ZONES.forEach((z, i) => {
+  const row = document.createElement('div');
+  row.className = 'czrow';
+  row.innerHTML = `
+    <div class="czrow-top">
+      <span class="czlabel">${i+1}. ${z.n}</span>
+      <span class="czperf" id="czperf${i}">100% bajarildi</span>
+    </div>
+    <div class="czshares">
+      <label>1-var %</label>
+      <input type="number" id="sh1_${i}" value="${z.p1}" min="0" max="100" step="1">
+      <span class="vsep">|</span>
+      <label>2-var %</label>
+      <input type="number" id="sh2_${i}" value="${z.p2}" min="0" max="100" step="1">
+      <span class="vsep">|</span>
+      <label>3-var %</label>
+      <input type="number" id="sh3_${i}" value="${z.p3}" min="0" max="100" step="1">
+      <span class="share-warn" id="warn${i}"></span>
+    </div>
+    <div class="czslider-row">
+      <label>Bajarildi</label>
+      <input type="range" min="0" max="100" value="100" step="1" id="perf${i}">
+      <span class="czslider-lbl" id="plbl${i}">100%</span>
+    </div>`;
+  calcZones.appendChild(row);
+
+  si.push({
+    s1: document.getElementById(`sh1_${i}`),
+    s2: document.getElementById(`sh2_${i}`),
+    s3: document.getElementById(`sh3_${i}`),
+  });
+  const slider = document.getElementById(`perf${i}`);
+  pr.push(slider);
+
+  ['sh1_','sh2_','sh3_'].forEach(pre => {
+    document.getElementById(pre+i).addEventListener('input', render);
+  });
+  slider.addEventListener('input', () => {
+    const v = slider.value;
+    document.getElementById(`czperf${i}`).textContent = v + '% bajarildi';
+    document.getElementById(`plbl${i}`).textContent = v + '%';
+    render();
+  });
+});
+
+bInput.addEventListener('input', render);
+baseInput.addEventListener('input', render);
+
+function g(el){ return Math.max(0, parseInt(el.value)||0); }
+
+function render(){
+  const B    = Math.max(0, g(bInput));
+  const BASE = Math.max(0, g(baseInput));
+  const TOTAL = B + BASE;
+
+  /* Hero va summary yangilash */
+  const fmt = n => n.toLocaleString();
+  document.getElementById('heroTotal').textContent  = fmt(TOTAL);
+  document.getElementById('metaBase').textContent   = fmt(BASE);
+  document.getElementById('metaB').textContent      = fmt(B);
+  document.getElementById('metaTotal').textContent  = fmt(TOTAL);
+  document.getElementById('sumBase').textContent    = fmt(BASE) + ' $';
+  document.getElementById('sumB').textContent       = fmt(B) + ' $';
+  document.getElementById('sumTotal').textContent   = fmt(TOTAL) + ' $';
+
+  const shares = ZONES.map((_, i) => ({
+    s1: g(si[i].s1), s2: g(si[i].s2), s3: g(si[i].s3)
+  }));
+
+  const sum1 = shares.reduce((a,s)=>a+s.s1,0);
+  const sum2 = shares.reduce((a,s)=>a+s.s2,0);
+  const sum3 = shares.reduce((a,s)=>a+s.s3,0);
+
+  ZONES.forEach((_,i)=>{
+    const w = document.getElementById('warn'+i);
+    if(sum1!==100||sum2!==100||sum3!==100){
+      w.style.display='inline';
+      w.textContent=`V1:${sum1}% V2:${sum2}% V3:${sum3}% (100 bo'lsin)`;
+    } else {
+      w.style.display='none';
+    }
   });
 
-  /* ---- Asosiy render funksiyasi ---- */
-  function render() {
-    const B    = Math.max(0, parseInt(bInput.value)    || 0);
-    const BASE = Math.max(0, parseInt(baseInput.value) || 0);
+  const maxes = shares.map(s=>({
+    m1: Math.round(B*s.s1/100),
+    m2: Math.round(B*s.s2/100),
+    m3: Math.round(B*s.s3/100),
+  }));
 
-    /* Zona maks summalari B ga qarab */
-    const maxes = zoneRatios.map(z => ({
-      m1: Math.round(B * z.r1),
-      m2: Math.round(B * z.r2),
-      m3: Math.round(B * z.r3),
-    }));
+  const perfs = pr.map(r=>parseInt(r.value));
 
-    /* Slider qiymatlari */
-    const pcts = zoneRatios.map((_, i) => parseInt(document.getElementById('s' + i).value));
+  /* Zona maks badgelari */
+  const zmappers = [
+    ['.zmax1', maxes[0].m3],
+    ['.zmax2', maxes[1].m3],
+    ['.zmax3', maxes[2].m3],
+    ['.zmax4', maxes[3].m3],
+    ['.zmax5', maxes[4].m3],
+  ];
+  zmappers.forEach(([sel, val])=>{
+    document.querySelectorAll(sel).forEach(el=>el.textContent=val.toLocaleString());
+  });
 
-    /* Slider labellarini yangilash */
-    pcts.forEach((v, i) => {
-      document.getElementById('pct'  + i).textContent = v + '%';
-      document.getElementById('plbl' + i).textContent = v + '% bajarildi';
-    });
+  /* Jadval */
+  calcBody.innerHTML='';
+  let t1=0,t2=0,t3=0;
+  ZONES.forEach((z,i)=>{
+    const p=perfs[i];
+    const e1=Math.round(maxes[i].m1*p/100);
+    const e2=Math.round(maxes[i].m2*p/100);
+    const e3=Math.round(maxes[i].m3*p/100);
+    t1+=e1; t2+=e2; t3+=e3;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <th>${i+1}. ${z.n}<br>
+        <span style="font-size:.72rem;font-weight:400;color:#6a8a80;font-family:'Hanken Grotesk',sans-serif">
+          maks ${maxes[i].m1}$ / ${maxes[i].m2}$ / ${maxes[i].m3}$
+        </span>
+      </th>
+      <td>${e1.toLocaleString()} $</td>
+      <td>${e2.toLocaleString()} $</td>
+      <td class="crec">${e3.toLocaleString()} $</td>`;
+    calcBody.appendChild(tr);
+  });
 
-    /* Jadval qatorlarini qurish */
-    tbody.innerHTML = '';
-    let tot1 = 0, tot2 = 0, tot3 = 0;
+  calcFoot.innerHTML=`
+    <tr>
+      <th>Belgilangan maosh</th>
+      <td>${BASE} $</td><td>${BASE} $</td><td class="crec">${BASE} $</td>
+    </tr>
+    <tr>
+      <th>Bonus</th>
+      <td>${t1.toLocaleString()} $</td><td>${t2.toLocaleString()} $</td><td class="crec">${t3.toLocaleString()} $</td>
+    </tr>`;
 
-    zoneRatios.forEach((z, i) => {
-      const v  = pcts[i];
-      const e1 = Math.round(maxes[i].m1 * v / 100);
-      const e2 = Math.round(maxes[i].m2 * v / 100);
-      const e3 = Math.round(maxes[i].m3 * v / 100);
-      tot1 += e1; tot2 += e2; tot3 += e3;
+  calcGrand.innerHTML=`
+    <div class="cgrand-item">
+      <div class="cg-label">1-variant jami</div>
+      <div class="cg-val">${(BASE+t1).toLocaleString()} $</div>
+      <div class="cg-sub">Sof yordamchi + PR</div>
+    </div>
+    <div class="cgrand-item">
+      <div class="cg-label">2-variant jami</div>
+      <div class="cg-val">${(BASE+t2).toLocaleString()} $</div>
+      <div class="cg-sub">Rotatsiya</div>
+    </div>
+    <div class="cgrand-item rec">
+      <div class="cg-label">3-variant jami &#10022;</div>
+      <div class="cg-val">${(BASE+t3).toLocaleString()} $</div>
+      <div class="cg-sub">Gibrid (tavsiya)</div>
+    </div>`;
+}
 
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <th style="font-weight:600;color:var(--ink);background:#FAF7EF;padding:12px 16px;border-bottom:1px solid var(--line);font-size:.88rem">
-          ${z.n}
-          <div style="font-weight:400;font-size:.78rem;color:var(--muted);margin-top:2px">
-            maks: ${maxes[i].m1}$ / ${maxes[i].m2}$ / ${maxes[i].m3}$
-          </div>
-        </th>
-        <td style="text-align:center;padding:12px 16px;border-bottom:1px solid var(--line);font-size:.95rem">
-          <b style="font-family:'Fraunces',serif;color:var(--muted)">${e1} $</b>
-        </td>
-        <td style="text-align:center;padding:12px 16px;border-bottom:1px solid var(--line);font-size:.95rem">
-          <b style="font-family:'Fraunces',serif;color:var(--muted)">${e2} $</b>
-        </td>
-        <td style="text-align:center;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--acc-soft);font-size:.95rem">
-          <b style="font-family:'Fraunces',serif;color:var(--acc)">${e3} $</b>
-        </td>`;
-      tbody.appendChild(tr);
-    });
-
-    /* Footer - bonus va jami */
-    tfoot.innerHTML = `
-      <tr style="border-top:2px solid var(--line)">
-        <th style="background:#FAF7EF;padding:12px 16px;font-weight:600;font-size:.9rem;color:var(--muted)">Belgilangan maosh</th>
-        <td style="text-align:center;padding:12px 16px;color:var(--muted);font-size:.92rem">${BASE} $</td>
-        <td style="text-align:center;padding:12px 16px;color:var(--muted);font-size:.92rem">${BASE} $</td>
-        <td style="text-align:center;padding:12px 16px;background:var(--acc-soft);color:var(--muted);font-size:.92rem">${BASE} $</td>
-      </tr>
-      <tr>
-        <th style="background:#FAF7EF;padding:12px 16px;font-weight:600;font-size:.9rem;color:var(--ink)">Bonus (bajarilgan)</th>
-        <td style="text-align:center;padding:12px 16px;font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--muted)">${tot1} $</td>
-        <td style="text-align:center;padding:12px 16px;font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--muted)">${tot2} $</td>
-        <td style="text-align:center;padding:12px 16px;background:var(--acc-soft);font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--acc)">${tot3} $</td>
-      </tr>
-      <tr>
-        <th style="background:#FAF7EF;padding:14px 16px;font-weight:700;font-size:1rem;color:var(--ink);font-family:'Fraunces',serif">JAMI (qoʻlga)</th>
-        <td style="text-align:center;padding:14px 16px;font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;color:#16201C">${BASE + tot1} $</td>
-        <td style="text-align:center;padding:14px 16px;font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;color:#16201C">${BASE + tot2} $</td>
-        <td style="text-align:center;padding:14px 16px;background:var(--acc-soft);font-family:'Fraunces',serif;font-weight:700;font-size:1.35rem;color:var(--acc)">${BASE + tot3} $</td>
-      </tr>`;
-  }
-
-  bInput.addEventListener('input', render);
-  baseInput.addEventListener('input', render);
-  render();
+render();
 </script>
 </body>
 </html>
